@@ -36,9 +36,9 @@ else:
 close_case = 0
 
 # LOGIN TO MT5
-account = 51610727
+account = xxx
 mt5.initialize("C:/Program Files/MetaTrader 5/terminal64.exe")
-authorized=mt5.login(account, password="$ch9to$aJH", server = "mt5-demo.icmarkets.com")
+authorized=mt5.login(account, password="xxx", server = "mt5-demo.icmarkets.com")
 
 if authorized:
     print("Connected: Connecting to MT5 Client")
