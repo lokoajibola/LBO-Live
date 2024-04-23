@@ -15,27 +15,35 @@ import pytz
 from time import sleep
 
 
-# news_zone = 'GB'
+news_zone = 'GB'
 # news_zone = 'EU'
 news_zone = 'US'
+# news_zone = 'LBO'
+# news_zone = 'CC'
 
 if news_zone == 'GB':
     currs = ['GBPJPY','GBPUSD', 'EURGBP']
 elif news_zone == 'EU':
     currs = [ 'EURUSD', 'EURGBP']
+elif news_zone == 'LBO':
+    currs = ['GBPJPY','GBPUSD', 'EURUSD', 'EURGBP', 'USDJPY', 'XAUUSD']
+elif news_zone == 'CC':
+    currs = ['BTCUSD', 'ETHUSD', 'DOGUSD', 'SOLUSD']
+
+    
 else:
     currs = ['GBPUSD', 'EURUSD', 'USDJPY', 'XAUUSD']
 
 
-news_min = 6
-news_hour = 18
+news_min = 0
+news_hour = 15
 # if news_min > 0: news_hour = news_hour+1
 close_case = 0
 
 # LOGIN TO MT5
-account = xxxxx
+account = 51610727
 mt5.initialize("C:/Program Files/MetaTrader 5/terminal64.exe")
-authorized=mt5.login(account, password="xxxxxx", server = "mt5-demo.icmarkets.com")
+authorized=mt5.login(account, password="$ch9to$aJH", server = "mt5-demo.icmarkets.com")
 
 if authorized:
     print("Connected: Connecting to MT5 Client")
@@ -54,6 +62,8 @@ mt5_now = datetime.datetime.now(tz2)
 
 prev_positions = 0
 news_time = datetime.datetime.now(tz).replace(hour=news_hour, minute=news_min, second =0)
+# news_time = datetime.datetime.now().replace(hour=datetime.datetime.now().hour + 1, minute=0, second =0)
+
 
 # ALL FUNCTIONS
 def get_rates(curr_pair, rate_type=1):
@@ -77,6 +87,7 @@ def make_order(curr_pair, request, SL1, TP1, SL2, TP2, high, low, time_diff):
 
         deviation = 20
         symbol_info = mt5.symbol_info(symbol)
+        # time_diff = datetime.datetime.timestamp(tz2.localize(datetime.datetime.now()) + datetime.timedelta(0,500))
         
         if symbol_info is None:
             print(symbol, "not found, can not call order_check()")
@@ -118,15 +129,20 @@ def make_order(curr_pair, request, SL1, TP1, SL2, TP2, high, low, time_diff):
             "deviation": deviation,
             "magic": 234000,
             "comment": "python script open",
-            "type_time": mt5.ORDER_TIME_GTC,
+            "type_time": mt5.ORDER_TIME_GTC, # ORDER_TIME_SPECIFIED,
             # "expiration": round(time_diff),
             "type_filling": mt5.ORDER_FILLING_RETURN,
         }
         
         if request == 1:
             result = mt5.order_send(B_request)
+            if result.comment == "Request executed":
+                print(result.request.symbol, " PENDING TRADE DONE ")
+            
         elif request == 2:
             result = mt5.order_send(S_request)
+            if result.comment == "Request executed":
+                print(result.request.symbol, " PENDING TRADE DONE ")
             
             
         return result
@@ -137,7 +153,7 @@ def close_pending_order(order):
         "order": order.ticket,
         "action": mt5.TRADE_ACTION_REMOVE,   
         }
-    print (mt5.order_check(request1))
+    print ("CLOSE PENDING ORDER")
     mt5.order_send(request1)
     
 def close_position(position):
@@ -159,23 +175,25 @@ def close_position(position):
         }
     
         result = mt5.order_send(request)
-        print("CLOSE TRADE DONE - WIDEN THE GAP")
+        print("CLOSE TRADE DONE - ", result.request.symbol)
         return result
 
 
 london_now = datetime.datetime.now(tz)
 sleep_time = 1
+set_open_trades = 0
+set_open_orders = 0
 
-
-while datetime.datetime.now(tz).hour <= 20:
+while datetime.datetime.now(tz).hour <= 22:
     london_now = datetime.datetime.now(tz)
     if datetime.datetime.now(tz)  >= news_time + datetime.timedelta(0,120): # MANUAL EXPIRATION OF PENDING ORDERS
         close_case = 10
     elif datetime.datetime.now(tz).hour == 20: # CLOSE ALL POSTIONS BY 5PM LONDON TIME
         close_case = 5
-    elif len(mt5.positions_get()) > prev_positions: # CLOSE PENDING ORDER ONCE 
-        close_case = 1
-        sleep_time = 0
+    # elif len(mt5.positions_get()) > prev_positions: # CLOSE PENDING ORDER ONCE 
+    #     close_case = 1
+    #     sleep_time = 0
+    #     prev_positions = 0
     else:
         close_case = 0
 
@@ -183,28 +201,42 @@ while datetime.datetime.now(tz).hour <= 20:
     for curr in currs:
         if (len(mt5.positions_get(symbol=curr)) < 1 and len(mt5.orders_get(symbol=curr)) < 1 
             and close_case == 0 and datetime.datetime.now(tz) >= news_time - datetime.timedelta(0,3) 
-                and datetime.datetime.now(tz) < news_time + datetime.timedelta(0,4)):
+                and datetime.datetime.now(tz) < news_time + datetime.timedelta(0,4)
+                and set_open_trades == 0):
                 
            
             # for curr in currs:
             rates_frame = get_rates(curr, 2)
-            rates_frame['time'] = pd.to_datetime(rates_frame['time'], unit='s')
-            rates_frame['mins'] = rates_frame['time'].dt.minute
-            rates_frame['hrs'] = rates_frame['time'].dt.hour
+            rates_frame['times'] = pd.to_datetime(rates_frame['time'], unit='s')
+            rates_frame['mins'] = rates_frame['times'].dt.minute
+            rates_frame['hrs'] = rates_frame['times'].dt.hour
             df = rates_frame
             df = df[(df['mins'] >= news_min-20) & (df['mins'] <= news_min) & (df['hrs'] <= news_hour+2)]
             high = df['high'].max()
             low = df['low'].min()
             point = mt5.symbol_info(curr).point
             SL1 = high - (20 * point)
-            TP1 = high + (100 * point)
+            TP1 = high + (20 * point)
             SL2 = low + (20 * point)
-            TP2 = low - (100 * point)
+            TP2 = low - (20 * point)
+            
+            if news_zone == 'LBO':
+                SL1 = high - ((high - low)/2)
+                TP1 = high + ((high - low))
+                SL2 = low + ((high - low)/2)
+                TP2 = low - ((high - low))
             
             # SET EXPIRATION TIME FOR THE PENDING ORDERS FOR 10AM
-            target_time = tz2.localize(datetime.datetime.now())
-            target_time = datetime.datetime.now(tz2).replace(hour=datetime.datetime.now(tz2).hour, minute=10, second=5, microsecond=0)
+            # target_time = tz2.localize(datetime.datetime.now())
+            # target_time = datetime.datetime.now(tz2).replace(hour=datetime.datetime.now(tz2).hour, minute=10, second=5, microsecond=0)
+            # time_diff = datetime.datetime.timestamp(target_time)
+            # target_time = datetime.datetime.now(tz).replace(hour=datetime.datetime.now(tz2).hour, minute=datetime.datetime.now(tz2).minute + 50, second=0, microsecond=0)
+            dt = datetime.datetime.now(tz2) + datetime.timedelta(0,3600)
+            target_time = datetime.datetime(dt.year, dt.month, dt.day, dt.hour, dt.minute, dt.second)
+            # target_time = datetime.datetime.now(tz2) + datetime.timedelta(0,3600)
             time_diff = datetime.datetime.timestamp(target_time)
+            
+            # int(datetime(2022, 8, 29, 16).timestamp())
             
             # PLACE TRADE     
             ord1 = make_order(curr, 1, SL1, TP1, SL2, TP2, high, low, time_diff)
@@ -215,7 +247,7 @@ while datetime.datetime.now(tz).hour <= 20:
 
     #TAKE PROFIT
     for position in mt5.positions_get():
-        if position.profit >= 50.0:
+        if position.profit >= 20.0:
             close_result = close_position(position)
             
 
@@ -230,21 +262,31 @@ while datetime.datetime.now(tz).hour <= 20:
         orders = mt5.orders_get()
         for order in orders:
             close_order = close_pending_order(order)
+            
+    if len(mt5.orders_get()) > 0:
+        set_open_orders = 1
 
     
 # MULTIPLE CURRENCY PAIRS
 # WHEN PENDING ORDER CHANGES TO POSITION
 
-    if close_case == 1:
+    if len(mt5.positions_get()) >= 1:
         for position in mt5.positions_get():
             pos_sym = position.symbol
             if len(mt5.orders_get()) > 0:
                 for order in mt5.orders_get():
                     if order.symbol == pos_sym:
                         close_order = close_pending_order(order)
-                        prev_positions = prev_positions+1
+                        prev_positions = len(mt5.positions_get())
+                        set_open_trades = 1
                         
     
     print(london_now)
     sleep(sleep_time)
     
+    if (len(mt5.positions_get()) < 1 and len(mt5.orders_get()) < 1 
+        and set_open_orders == 1):
+        print("no active trades, closing...")
+        break
+    
+    # news_time = datetime.datetime.now().replace(hour=datetime.datetime.now().hour + 1, minute=0, second =0)
