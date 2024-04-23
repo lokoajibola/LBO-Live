@@ -17,12 +17,13 @@ from time import sleep
 # curr = 'GBPJPY'
 # curr1 = 'GBPUSD'
 currs = ['GBPJPY','GBPUSD', 'EURUSD', 'EURGBP', 'USDJPY', 'XAUUSD']
+# currs = ['BTCUSD']
 close_case = 0
 
 # LOGIN TO MT5
-account = xxxxx
+account = xxx
 mt5.initialize("C:/Program Files/MetaTrader 5/terminal64.exe")
-authorized=mt5.login(account, password="$xxxxxxx", server = "mt5-demo.icmarkets.com")
+authorized=mt5.login(account, password="xxx", server = "mt5-demo.icmarkets.com")
 
 if authorized:
     print("Connected: Connecting to MT5 Client")
@@ -39,6 +40,7 @@ tz = pytz.timezone("Europe/London")
 tz2 = pytz.timezone("Europe/Moscow") # MT5 timezone
 mt5_now = datetime.datetime.now(tz2)
 prev_positions = 0
+set_open_trades = 0
 
 
 # ALL FUNCTIONS
@@ -111,8 +113,12 @@ def make_order(curr_pair, request, SL1, TP1, SL2, TP2, high, low, time_diff):
         
         if request == 1:
             result = mt5.order_send(B_request)
+            if result.comment == "Request executed":
+                print(result.request.symbol, " PENDING TRADE DONE ")
         elif request == 2:
             result = mt5.order_send(S_request)
+            if result.comment == "Request executed":
+                print(result.request.symbol, " PENDING TRADE DONE ")
             
             
         return result
@@ -123,7 +129,7 @@ def close_pending_order(order):
         "order": order.ticket,
         "action": mt5.TRADE_ACTION_REMOVE,   
         }
-    print (mt5.order_check(request1))
+    print ("CLOSE PENDING ORDER")
     mt5.order_send(request1)
     
 def close_position(position):
@@ -145,12 +151,14 @@ def close_position(position):
         }
     
         result = mt5.order_send(request)
-        print("CLOSE TRADE DONE - WIDEN THE GAP")
+        print("CLOSE TRADE DONE - ", result.request.symbol)
         return result
 
 
 london_now = datetime.datetime.now(tz)
 sleep_time = 2
+set_open_trades = 0
+set_open_orders = 0
 
 
 while datetime.datetime.now(tz).hour <= 18:
@@ -163,12 +171,13 @@ while datetime.datetime.now(tz).hour <= 18:
     elif len(mt5.positions_get()) > prev_positions: # CLOSE PENDING ORDER ONCE 
         close_case = 1
         sleep_time = 1
+        prev_positions = 0
     else:
         close_case = 0
 
 # TO OPEN ORDER    
     for curr in currs:
-        if len(mt5.positions_get(symbol=curr)) < 1 and len(mt5.orders_get(symbol=curr)) < 1 and close_case == 0 and datetime.datetime.now(tz).hour >= 8 and datetime.datetime.now(tz).minute <= 5:
+        if len(mt5.positions_get(symbol=curr)) < 1 and set_open_trades == 0 and len(mt5.orders_get(symbol=curr)) < 1 and close_case == 0 and datetime.datetime.now(tz).hour >= 8 and datetime.datetime.now(tz).minute <= 5:
            
             # for curr in currs:
             rates_frame = get_rates(curr, 2)
@@ -179,9 +188,9 @@ while datetime.datetime.now(tz).hour <= 18:
             high = df['high'].max()
             low = df['low'].min()
             SL1 = high - ((high - low)/2)
-            TP1 = high + ((high - low)*2)
+            TP1 = high + ((high - low))
             SL2 = low + ((high - low)/2)
-            TP2 = low - ((high - low)*2)
+            TP2 = low - ((high - low))
             
             # SET EXPIRATION TIME FOR THE PENDING ORDERS FOR 10AM
             target_time = datetime.datetime.now(tz).replace(hour=datetime.datetime.now(tz).hour+5, minute=00, second=5, microsecond=0)
@@ -210,6 +219,10 @@ while datetime.datetime.now(tz).hour <= 18:
         orders = mt5.orders_get()
         for order in orders:
             close_order = close_pending_order(order)
+    
+    if len(mt5.orders_get()) > 0:
+        set_open_orders = 1
+            
 
     
 # MULTIPLE CURRENCY PAIRS
@@ -222,9 +235,14 @@ while datetime.datetime.now(tz).hour <= 18:
                 for order in mt5.orders_get():
                     if order.symbol == pos_sym:
                         close_order = close_pending_order(order)
-                        prev_positions = prev_positions+1
-                        
+                        prev_positions = len(mt5.positions_get())
+                        set_open_trades = 1
     
     print(london_now)
     sleep(sleep_time)
+    
+    if (len(mt5.positions_get()) < 1 and len(mt5.orders_get()) < 1 
+        and set_open_orders == 1):
+        print("no active trades, closing...")
+        break
     
