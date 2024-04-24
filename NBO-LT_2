@@ -182,9 +182,9 @@ trade_time = datetime.datetime.now()
 
 while datetime.datetime.now().hour <= 22:
     london_now = datetime.datetime.now(tz)
-    if datetime.datetime.now()  >= trade_time + datetime.timedelta(0,120): # MANUAL EXPIRATION OF PENDING ORDERS
-        close_case = 10
-    elif datetime.datetime.now().hour == 20: # CLOSE ALL POSTIONS BY 5PM LONDON TIME
+    # if datetime.datetime.now()  >= trade_time + datetime.timedelta(0,120): # MANUAL EXPIRATION OF PENDING ORDERS
+    #     close_case = 10
+    if datetime.datetime.now().hour == 20: # CLOSE ALL POSTIONS BY 5PM LONDON TIME
         close_case = 5
     else:
         close_case = 0
@@ -193,7 +193,7 @@ while datetime.datetime.now().hour <= 22:
     for curr in currs:
         if (len(mt5.positions_get(symbol=curr)) < 1 and len(mt5.orders_get(symbol=curr)) < 1 
             and close_case == 0 and datetime.datetime.now() >= news_time - datetime.timedelta(0,3) 
-                and datetime.datetime.now() < news_time + datetime.timedelta(0,4)
+                and datetime.datetime.now() < news_time + datetime.timedelta(0,7)
                 and set_open_trades == 0):
                 
            
@@ -253,7 +253,9 @@ while datetime.datetime.now().hour <= 22:
             close_result = close_position(position)
     
     # CLOSE PENDING ORDER ONCE ONE ORDER ACTIVATES OR 10AM HITS
-    if close_case == 10 :
+    # if close_case == 10 :
+    if datetime.datetime.now()  > trade_time + datetime.timedelta(0,120): # MANUAL EXPIRATION OF PENDING ORDERS
+        # close_case = 10
         orders = mt5.orders_get()
         for order in orders:
             close_order = close_pending_order(order)
@@ -285,7 +287,9 @@ while datetime.datetime.now().hour <= 22:
         set_open_orders = 0
         # break
     
+    # if datetime.datetime.now().minute >= 58:
     news_time = datetime.datetime.now().replace(hour=datetime.datetime.now().hour + 1, minute=0, second =0)
+
     if datetime.datetime.now().hour < 12:
         currs = ['GBPJPY','GBPUSD', 'EURUSD','EURGBP']
     else:
