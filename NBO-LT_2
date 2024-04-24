@@ -36,9 +36,9 @@ else:
 close_case = 0
 
 # LOGIN TO MT5
-account = xxx
+account = 51610727
 mt5.initialize("C:/Program Files/MetaTrader 5/terminal64.exe")
-authorized=mt5.login(account, password="xxx", server = "mt5-demo.icmarkets.com")
+authorized=mt5.login(account, password="$ch9to$aJH", server = "mt5-demo.icmarkets.com")
 
 if authorized:
     print("Connected: Connecting to MT5 Client")
@@ -178,10 +178,11 @@ london_now = datetime.datetime.now(tz)
 sleep_time = 1
 set_open_trades = 0
 set_open_orders = 0
+trade_time = datetime.datetime.now()
 
 while datetime.datetime.now().hour <= 22:
     london_now = datetime.datetime.now(tz)
-    if datetime.datetime.now()  >= news_time + datetime.timedelta(0,120): # MANUAL EXPIRATION OF PENDING ORDERS
+    if datetime.datetime.now()  >= trade_time + datetime.timedelta(0,120): # MANUAL EXPIRATION OF PENDING ORDERS
         close_case = 10
     elif datetime.datetime.now().hour == 20: # CLOSE ALL POSTIONS BY 5PM LONDON TIME
         close_case = 5
@@ -234,6 +235,7 @@ while datetime.datetime.now().hour <= 22:
             # PLACE TRADE     
             ord1 = make_order(curr, 1, SL1, TP1, SL2, TP2, high, low, time_diff)
             ord2 = make_order(curr, 2, SL1, TP1, SL2, TP2, high, low, time_diff)
+            trade_time = datetime.datetime.now()
    
 
 # TO CLOSE ORDER
