@@ -234,6 +234,8 @@ while datetime.datetime.now(tz).hour <= 18:
                 for order in mt5.orders_get():
                     if order.symbol == pos_sym:
                         close_order = close_pending_order(order)
+                        prev_positions = len(mt5.positions_get())
+                        set_open_trades = 1
         
 
     # if close_case == 1:
