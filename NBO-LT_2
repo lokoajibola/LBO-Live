@@ -208,9 +208,10 @@ while datetime.datetime.now(tz).hour <= 22:
             news_min = datetime.datetime.now(tz).minute
             news_hour = datetime.datetime.now(tz).hour
             df = df[(df['mins'] >= news_min-20) & (df['mins'] <= news_min) & (df['hrs'] <= news_hour+2)]
-            high = df['high'].max()
-            low = df['low'].min()
             point = mt5.symbol_info(curr).point
+            high = df['high'].max() + (5 * point)
+            low = df['low'].min() - (5 * point)
+            
             SL1 = high - (20 * point)
             TP1 = high + (20 * point)
             SL2 = low + (20 * point)
