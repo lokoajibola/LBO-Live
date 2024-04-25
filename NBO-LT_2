@@ -254,7 +254,7 @@ while datetime.datetime.now(tz).hour <= 22:
     if len(mt5.orders_get()) > 0:
         set_open_orders = 1
     
-    if len(mt5.orders_positions()) < 1 and datetime.datetime.now(tz) > news_time + datetime.timedelta(0,7):
+    if len(mt5.positions_get()) < 1 and datetime.datetime.now(tz) > news_time + datetime.timedelta(0,7):
         set_open_pos = 0
 
     
