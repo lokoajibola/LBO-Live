@@ -185,8 +185,9 @@ while datetime.datetime.now(tz).hour <= 18:
             rates_frame['hrs'] = rates_frame['time'].dt.hour
             df = rates_frame
             df = df[(df['hrs'] >= 0) & (df['hrs'] <= 8)]
-            high = df['high'].max()
-            low = df['low'].min()
+            point = mt5.symbol_info(curr).point
+            high = df['high'].max() + (5 * point)
+            low = df['low'].min() - (5 * point)
             SL1 = high - ((high - low)/2)
             TP1 = high + ((high - low))
             SL2 = low + ((high - low)/2)
