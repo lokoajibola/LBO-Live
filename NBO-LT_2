@@ -82,7 +82,9 @@ def make_order(curr_pair, request, SL1, TP1, SL2, TP2, high, low):
         time_diff = datetime.datetime.timestamp(exp_time + datetime.timedelta(minutes=3))
 
         deviation = 20
+        tick = mt5.symbol_info_tick(symbol)
         symbol_info = mt5.symbol_info(symbol)
+        point = mt5.symbol_info(symbol).point
         # time_diff = datetime.datetime.timestamp(tz2.localize(datetime.datetime.now()) + datetime.timedelta(0,500))
         
         if symbol_info is None:
@@ -103,7 +105,7 @@ def make_order(curr_pair, request, SL1, TP1, SL2, TP2, high, low):
             "symbol": symbol,
             "volume": lot,
             "type": mt5.ORDER_TYPE_BUY_STOP,
-            "price": high, #price,
+            "price": high if tick.ask < high else tick.ask + (5*point), #price,
             "sl": SL1, # 0.0,#price - (120000 * point),
             "tp": TP1,#price + (120000 * point),
             "deviation": deviation,
@@ -119,7 +121,7 @@ def make_order(curr_pair, request, SL1, TP1, SL2, TP2, high, low):
             "symbol": symbol,
             "volume": lot,
             "type": mt5.ORDER_TYPE_SELL_STOP,
-            "price": low, #price2,
+            "price": low if tick.bid > low else tick.bid - (5*point), #price2,
             "sl": SL2,#price + (120000 * point),
             "tp": TP2,#price - (120000 * point),
             "deviation": deviation,
@@ -176,7 +178,7 @@ def close_position(position):
 
 
 london_now = datetime.datetime.now(tz)
-sleep_time = 1
+sleep_time = 0.1
 set_open_pos = 0
 set_open_orders = 0
 trade_time = datetime.datetime.now(tz)
@@ -233,7 +235,7 @@ while datetime.datetime.now(tz).hour <= 22:
 
     #TAKE PROFIT
     for position in mt5.positions_get():
-        if position.profit >= 20.0:
+        if position.profit >= 10.0:
             close_result = close_position(position)
             
 
@@ -254,7 +256,8 @@ while datetime.datetime.now(tz).hour <= 22:
     if len(mt5.orders_get()) > 0:
         set_open_orders = 1
     
-    if len(mt5.positions_get()) < 1 and datetime.datetime.now(tz) > news_time + datetime.timedelta(0,7):
+    if (len(mt5.positions_get()) < 1 and datetime.datetime.now(tz) > trade_time + datetime.timedelta(0,7)
+            and set_open_pos > 0):
         set_open_pos = 0
 
     
