@@ -64,6 +64,9 @@ def make_order(curr_pair, request, SL1, TP1, SL2, TP2, high, low, time_diff):
         lot = 3.0
 
         deviation = 20
+        tick = mt5.symbol_info_tick(symbol)
+        symbol_info = mt5.symbol_info(symbol)
+        point = mt5.symbol_info(symbol).point
         symbol_info = mt5.symbol_info(symbol)
         
         if symbol_info is None:
@@ -84,7 +87,7 @@ def make_order(curr_pair, request, SL1, TP1, SL2, TP2, high, low, time_diff):
             "symbol": symbol,
             "volume": lot,
             "type": mt5.ORDER_TYPE_BUY_STOP,
-            "price": high, #price,
+            "price": high if tick.ask < high else tick.ask + (5*point), #price,
             "sl": SL1, # 0.0,#price - (120000 * point),
             "tp": TP1,#price + (120000 * point),
             "deviation": deviation,
@@ -100,7 +103,7 @@ def make_order(curr_pair, request, SL1, TP1, SL2, TP2, high, low, time_diff):
             "symbol": symbol,
             "volume": lot,
             "type": mt5.ORDER_TYPE_SELL_STOP,
-            "price": low, #price2,
+            "price": low if tick.bid > low else tick.bid - (5*point), #price2,
             "sl": SL2,#price + (120000 * point),
             "tp": TP2,#price - (120000 * point),
             "deviation": deviation,
@@ -170,7 +173,7 @@ while datetime.datetime.now(tz).hour <= 18:
         close_case = 5
     elif len(mt5.positions_get()) > prev_positions: # CLOSE PENDING ORDER ONCE 
         close_case = 1
-        sleep_time = 1
+        sleep_time = 0.1
         prev_positions = 0
     else:
         close_case = 0
