@@ -35,8 +35,8 @@ else:
     currs = ['GBPUSD', 'EURUSD', 'USDJPY', 'XAUUSD']
 
 
-news_min = 24
-news_hour = 23
+news_min = 23
+news_hour = 1
 # if news_min > 0: news_hour = news_hour+1
 close_case = 0
 
@@ -86,6 +86,9 @@ def make_order(curr_pair, request, SL1, TP1, SL2, TP2, high, low):
         lot = 1.0
 
         deviation = 20
+        tick = mt5.symbol_info_tick(symbol)
+        symbol_info = mt5.symbol_info(symbol)
+        point = mt5.symbol_info(symbol).point
         symbol_info = mt5.symbol_info(symbol)
         exp_time = datetime.datetime.fromtimestamp(mt5.symbol_info(curr_pair).time)
         time_diff = datetime.datetime.timestamp(exp_time + datetime.timedelta(minutes=3))
@@ -108,7 +111,7 @@ def make_order(curr_pair, request, SL1, TP1, SL2, TP2, high, low):
             "symbol": symbol,
             "volume": lot,
             "type": mt5.ORDER_TYPE_BUY_STOP,
-            "price": high, #price,
+            "price": high if tick.ask < high else tick.ask + (5*point), #price,
             "sl": SL1, # 0.0,#price - (120000 * point),
             "tp": TP1,#price + (120000 * point),
             "deviation": deviation,
@@ -124,7 +127,7 @@ def make_order(curr_pair, request, SL1, TP1, SL2, TP2, high, low):
             "symbol": symbol,
             "volume": lot,
             "type": mt5.ORDER_TYPE_SELL_STOP,
-            "price": low, #price2,
+            "price": low if tick.bid > low else tick.bid - (5*point), #price2,
             "sl": SL2,#price + (120000 * point),
             "tp": TP2,#price - (120000 * point),
             "deviation": deviation,
@@ -181,7 +184,7 @@ def close_position(position):
 
 
 london_now = datetime.datetime.now(tz)
-sleep_time = 1
+sleep_time = 0.1
 set_open_trades = 0
 set_open_orders = 0
 
@@ -237,7 +240,7 @@ while datetime.datetime.now(tz).hour <= 25:
 
     #TAKE PROFIT
     for position in mt5.positions_get():
-        if position.profit >= 20.0:
+        if position.profit >= 10.0:
             close_result = close_position(position)
             
 
