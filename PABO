@@ -13,7 +13,7 @@ import MetaTrader5 as mt5
 import datetime
 import pandas as pd
 import pytz
-import pandas_ta as ta
+# import pandas_ta as ta
 from time import sleep
 
 
@@ -28,7 +28,8 @@ if news_zone == 'GB':
 elif news_zone == 'EU':
     currs = [ 'EURUSD', 'EURGBP']
 elif news_zone == 'ALL':
-    currs = ['GBPJPY','GBPUSD', 'EURUSD', 'EURGBP', 'USDJPY', 'XAUUSD', 'USDCAD', 'AUDUSD', 'BTCUSD', 'NZDUSD']
+    currs = ['GBPJPY','GBPUSD', 'EURUSD', 'EURGBP', 'USDJPY', 'XAUUSD', 
+             'USDCAD', 'AUDUSD', 'BTCUSD', 'NZDUSD']
 elif news_zone == 'CC':
     currs = ['BTCUSD', 'ETHUSD', 'DOGUSD', 'SOLUSD']
 else:
@@ -36,7 +37,7 @@ else:
 
 
 close_case = 0
-pct_diff = 0.00001
+pct_diff = 3 # 0.00001
 
 # LOGIN TO MT5
 account = 51610727
@@ -219,13 +220,13 @@ while datetime.datetime.now(tz).hour <= 22:
                 new_df = df.loc[:index]
                 df_high = new_df['high'].max()
                 df_low = new_df['low'].min()
-                
-                if (new_df['high'] > df_high*(1-pct_diff)).sum() >= 5:
+                point = mt5.symbol_info(curr).point
+                if (new_df['high'] > df_high - (pct_diff*point)).sum() >= 5:
                     print(curr, index, " RESISTANCE FOUND @ ", df_high  )
                     resistance = df_high
                     support = df_low
                     
-                    point = mt5.symbol_info(curr).point
+                    
                     high = resistance + (5 * point)
                     low = support - (5 * point)
                     
@@ -239,12 +240,11 @@ while datetime.datetime.now(tz).hour <= 22:
                     ord2 = make_order(curr, 2, SL1, TP1, SL2, TP2, high, low)
                     
                     break
-                if (new_df['low'] < df_low*(1+pct_diff)).sum() >= 5:
+                if (new_df['low'] < df_low + (pct_diff*point)).sum() >= 5:
                     print(curr, index, " SUPPORT FOUND @ ", df_high  )
                     resistance = df_high
                     support = df_low
                     
-                    point = mt5.symbol_info(curr).point
                     high = resistance + (10 * point)
                     low = support - (10 * point)
                     
@@ -309,7 +309,7 @@ while datetime.datetime.now(tz).hour <= 22:
                     if order.symbol == pos_sym:
                         close_order = close_pending_order(order)
                         prev_positions = len(mt5.positions_get())
-                        set_open_pos = 1
+                        # set_open_pos = 1
                         
     
     print(london_now)
