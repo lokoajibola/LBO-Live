@@ -7,8 +7,6 @@ TO MAKE PRICE ACTIVITY BREAKOUT TRADES AT ANYTIME
 @author: LK
 """
 
-
-
 # IMPORT LIBRARIES
 
 import MetaTrader5 as mt5
@@ -274,7 +272,7 @@ while datetime.datetime.now(tz).hour <= 22:
 
     #TAKE PROFIT
     for position in mt5.positions_get():
-        if position.profit >= 10.0:
+        if position.profit >= 20.0:
             close_result = close_position(position)
             
 
@@ -317,16 +315,19 @@ while datetime.datetime.now(tz).hour <= 22:
     print(london_now)
     sleep(sleep_time)
     
-    if (len(mt5.positions_get()) < 1 and len(mt5.orders_get()) < 1 
-        and set_open_orders == 1):
+    if (len(mt5.positions_get()) < 1 and len(mt5.orders_get()) < 1):
+        # and set_open_orders == 1):
         print("no active trades, closing...")
         set_open_orders = 0
+        sleep(10)
         # break
     
     # # if datetime.datetime.now().minute >= 58:
     # news_time = datetime.datetime.now(tz).replace(hour=datetime.datetime.now(tz).hour + 1, minute=0, second =0)
 
-    # if datetime.datetime.now(tz).hour < 12:
-    #     currs = ['GBPJPY','GBPUSD', 'EURUSD','EURGBP']
-    # else:
-    #     currs = ['GBPUSD', 'EURUSD', 'USDJPY', 'XAUUSD']
+    if datetime.datetime.now(tz).hour < 12 and datetime.datetime.now(tz).hour >= 6:
+        currs = ['GBPJPY','GBPUSD', 'EURUSD','EURGBP', 'BTCUSD']
+    elif datetime.datetime.now(tz).hour < 6:
+        currs = ['AUDUSD', 'NZDUSD', 'USDJPY', 'CADJPY']
+    else:
+        currs = ['GBPUSD', 'EURUSD', 'USDJPY', 'XAUUSD']
