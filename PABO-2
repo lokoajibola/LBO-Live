@@ -1,0 +1,387 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Tue May 14 10:50:51 2024
+
+TO MAKE PRICE ACTIVITY BREAKOUT TRADES AT ANYTIME
+
+@author: LK
+"""
+
+# IMPORT LIBRARIES
+
+import MetaTrader5 as mt5
+import numpy as np
+import datetime
+import pandas as pd
+import pytz
+import pandas_ta as ta
+from time import sleep
+
+
+# news_zone = 'GB'
+# news_zone = 'EU'
+# news_zone = 'US'
+news_zone = 'ALL'
+# news_zone = 'CC'
+
+if news_zone == 'GB':
+    currs = ['GBPJPY','GBPUSD', 'EURUSD','EURGBP']
+elif news_zone == 'EU':
+    currs = [ 'EURUSD', 'EURGBP']
+elif news_zone == 'ALL':
+    currs = ['GBPJPY','GBPUSD', 'EURUSD', 'EURGBP', 'USDJPY', 'XAUUSD', 
+             'USDCAD', 'AUDUSD', 'BTCUSD', 'NZDUSD']
+elif news_zone == 'CC':
+    currs = ['BTCUSD', 'ETHUSD', 'DOGUSD', 'SOLUSD']
+else:
+    currs = ['GBPUSD', 'EURUSD', 'USDJPY', 'XAUUSD']
+
+
+close_case = 0
+pct_diff = 5 # 0.00001
+period = 10
+
+# LOGIN TO MT5
+account = 51610727
+mt5.initialize("C:/Program Files/MetaTrader 5/terminal64.exe")
+authorized=mt5.login(account, password="$ch9to$aJH", server = "mt5-demo.icmarkets.com")
+
+if authorized:
+    print("Connected: Connecting to MT5 Client")
+else:
+    print("Failed to connect at account #{}, error code: {}"
+          .format(account, mt5.last_error()))
+   
+# establish connection to MetaTrader 5 terminal
+if not mt5.initialize():
+    print("initialize() failed, error code =",mt5.last_error())
+    mt5.shutdown()
+    
+tz = pytz.timezone("Europe/London")
+mt5_now = datetime.datetime.fromtimestamp(mt5.symbol_info('GBPUSD').time)
+
+prev_positions = 0
+# news_time = datetime.datetime.now(tz).replace(hour=news_hour, minute=news_min, second =0)
+# news_time = datetime.datetime.now(tz).replace(hour=datetime.datetime.now(tz).hour + 1, minute=0, second =0)
+
+
+# ALL FUNCTIONS
+def get_rates(curr_pair, rate_type=1):
+    
+    # point = mt5.symbol_info(curr_pair).point
+    
+    if rate_type == 2:
+    # RATES FOR LAST 1000 BARS # OHLC
+        # rates = mt5.copy_rates_from_pos(curr_pair, mt5.TIMEFRAME_M1, 0, 500)
+        utc_to = datetime.datetime.fromtimestamp(mt5.symbol_info(curr_pair).time)
+        utc_from = utc_to - datetime.timedelta(hours=5)
+        rates = mt5.copy_rates_range(curr_pair, mt5.TIMEFRAME_M5, utc_from, utc_to)
+        rates_frame = pd.DataFrame(rates)
+        # rates_frame['log_return'] = np.log(rates_frame['close']).diff()
+        
+    return rates_frame
+
+def make_order(curr_pair, request, SL1, TP1, SL2, TP2, high, low, comm):
+        symbol = curr_pair
+        lot = 1.0
+        exp_time = datetime.datetime.fromtimestamp(mt5.symbol_info(curr_pair).time)
+        time_diff = datetime.datetime.timestamp(exp_time + datetime.timedelta(minutes=30))
+
+        deviation = 20
+        tick = mt5.symbol_info_tick(symbol)
+        symbol_info = mt5.symbol_info(symbol)
+        point = mt5.symbol_info(symbol).point
+        # time_diff = datetime.datetime.timestamp(tz2.localize(datetime.datetime.now()) + datetime.timedelta(0,500))
+        
+        if symbol_info is None:
+            print(symbol, "not found, can not call order_check()")
+            mt5.shutdown()
+            quit()
+         
+        # if the symbol is unavailable in MarketWatch, add it
+        if not symbol_info.visible:
+            print(symbol, "is not visible, trying to switch on")
+            if not mt5.symbol_select(symbol,True):
+                print("symbol_select({}}) failed, exit",symbol)
+                mt5.shutdown()
+                quit()
+         
+        B_request = {
+            "action": mt5.TRADE_ACTION_PENDING,
+            "symbol": symbol,
+            "volume": lot,
+            "type": mt5.ORDER_TYPE_BUY_STOP,
+            "price": high if tick.ask < high else tick.ask + (5*point), #price,
+            "sl": SL1, # 0.0,#price - (120000 * point),
+            "tp": TP1,#price + (120000 * point),
+            "deviation": deviation,
+            "magic": 234000,
+            "comment": comm, #"python script open",
+            "type_time": mt5.ORDER_TIME_SPECIFIED, # ORDER_TIME_GTC,
+            "expiration": round(time_diff),
+            "type_filling": mt5.ORDER_FILLING_RETURN,
+        }
+         
+        S_request = {
+            "action": mt5.TRADE_ACTION_PENDING,
+            "symbol": symbol,
+            "volume": lot,
+            "type": mt5.ORDER_TYPE_SELL_STOP,
+            "price": low if tick.bid > low else tick.bid - (5*point), #price2,
+            "sl": SL2,#price + (120000 * point),
+            "tp": TP2,#price - (120000 * point),
+            "deviation": deviation,
+            "magic": 234000,
+            "comment": comm, # "python script open",
+            "type_time": mt5.ORDER_TIME_SPECIFIED, # ORDER_TIME_SPECIFIED,
+            "expiration": round(time_diff),
+            "type_filling": mt5.ORDER_FILLING_RETURN,
+        }
+        
+        if request == 1:
+            result = mt5.order_send(B_request)
+            if result.comment == "Request executed":
+                print(result.request.symbol, " PENDING TRADE DONE ")
+            
+        elif request == 2:
+            result = mt5.order_send(S_request)
+            if result.comment == "Request executed":
+                print(result.request.symbol, " PENDING TRADE DONE ")
+            
+            
+        return result
+
+def close_pending_order(order):
+    
+    request1={
+        "order": order.ticket,
+        "action": mt5.TRADE_ACTION_REMOVE,   
+        }
+    print ("CLOSE PENDING ORDER")
+    mt5.order_send(request1)
+    
+def is_ranging_bollinger_bands(data, period=20, num_std_dev=2):
+    upper_band, middle_band, lower_band = ta.bbands(data['close'], length=period, std=num_std_dev)
+    # Check if the price stays within the Bollinger Bands
+    is_ranging = (data['low'] > lower_band) & (data['high'] < upper_band)
+    return is_ranging
+    
+    
+def close_position(position):
+    
+        tick = mt5.symbol_info_tick(position.symbol)
+    
+        request = {
+            "action": mt5.TRADE_ACTION_DEAL,
+            "position": position.ticket,
+            "symbol": position.symbol,
+            "volume": position.volume,
+            "type": mt5.ORDER_TYPE_BUY if position.type == mt5.ORDER_TYPE_SELL else mt5.ORDER_TYPE_SELL,
+            "price": tick.ask if position.type == 1 else tick.bid,  
+            "deviation": 20,
+            "magic": 100,
+            "comment": "python script close",
+            "type_time": mt5.ORDER_TIME_GTC,
+            "type_filling": mt5.ORDER_FILLING_IOC,
+        }
+    
+        result = mt5.order_send(request)
+        print("CLOSE TRADE DONE - ", result.request.symbol)
+        return result
+
+
+london_now = datetime.datetime.now(tz)
+sleep_t = 0.1
+set_open_pos = 0
+set_open_orders = 0
+trade_time = datetime.datetime.now(tz)
+
+while datetime.datetime.now(tz).hour <= 26:
+    if (len(mt5.positions_get()) < 1 and len(mt5.orders_get()) < 1 
+        and datetime.datetime.now(tz).hour >= 21):
+        print("ON SLEEP TILL LONDON MIDNIGHT")
+        
+        
+        nyt = datetime.datetime.now(tz).replace(hour=23, minute=59, second =59)
+        sleep_time = nyt - datetime.datetime.now(tz)
+        
+        # sleep(sleep_time.seconds + 10)
+
+# TO OPEN ORDER    
+    for curr in currs:
+        if (len(mt5.positions_get(symbol=curr)) < 1 and len(mt5.orders_get(symbol=curr)) <= 1 
+            and close_case == 0 and set_open_pos == 0):
+            # and datetime.datetime.now(tz) >= news_time - datetime.timedelta(0,3) 
+            #     and datetime.datetime.now(tz) < news_time + datetime.timedelta(0,7)
+            #     ):
+                
+           
+            resistance = 0
+            support = 0
+            # for curr in currs:
+            rates_frame = get_rates(curr, 2)
+            rates_frame['times'] = pd.to_datetime(rates_frame['time'], unit='s')
+            rates_frame['mins'] = rates_frame['times'].dt.minute
+            rates_frame['hrs'] = rates_frame['times'].dt.hour
+            mt5_hr = datetime.datetime.fromtimestamp(mt5.symbol_info(curr).time)
+            
+            # GENERATE BOLLINGER BANDS FOR THE RATES_FRAME
+            bband_df = ta.bbands(rates_frame['close'], length=20, std=2)
+            
+            # REVERSE ROW OF DF TO ITERATE THROUGH EACH ROW TO TRACE BACK THE RANGE
+            df = rates_frame.loc[::-1].reset_index(drop=True)
+            bband_df = bband_df.loc[::-1].reset_index(drop=True)
+
+            # check_range = is_ranging_bollinger_bands(rates_frame)
+            
+            # USING BOLLINGER BANDS TO CONFIRM A RANGING MARKET
+            
+            # Comparing two columns
+            new_df = pd.DataFrame()
+            p = 10
+            new_df['BB_L'], new_df['df_L'],new_df['BB_H'], new_df['df_H'] = [bband_df['BBL_20_2.0'].loc[:p],
+                                                     df['low'].loc[:p], bband_df['BBU_20_2.0'].loc[:p], 
+                                                     df['high'].loc[:p]]
+            new_df['res'] = np.where((new_df['df_H'] <= new_df['BB_H']) & 
+                                     (new_df['df_L'] >= new_df['BB_L']), 0, 1)
+            
+            point = mt5.symbol_info(curr).point
+            if (new_df['res'].loc[1:].sum() < 1 and ((new_df['df_H'].loc[0] > new_df['BB_H'].loc[0]) or
+                                    (new_df['df_L'].loc[0] < new_df['BB_L'].loc[0]))) :
+                resistance = new_df['df_H'].max()
+                support = new_df['df_L'].min()
+                
+                high = resistance + (10 * point)
+                low = support - (10 * point)
+                
+                SL1 = support # high - (20 * point)
+                TP1 = high + (20 * point)
+                SL2 = resistance # low + (20 * point)
+                TP2 = low - (20 * point)
+                comm = "RANGING MARK"
+                
+                # PLACE TRADE     
+                ord1 = make_order(curr, 1, SL1, TP1, SL2, TP2, high, low, comm)
+                ord2 = make_order(curr, 2, SL1, TP1, SL2, TP2, high, low, comm)
+                    
+            
+            
+            # # LOOP THROUGH ROWS TO GET SUPPORT AND RESISTANCE
+            # for index, row in df.iterrows():
+            #     new_df = df.loc[:index]
+            #     df_high = new_df['high'].max()
+            #     df_low = new_df['low'].min()
+            #     point = mt5.symbol_info(curr).point
+            #     # TRACKBACK TO THE 5 CLOSEST TO THE RESISTANCE TO CONFIRM RESISTANCE EXIST
+            #     if (new_df['high'] > df_high - (pct_diff*point)).sum() >= 7:
+            #         print(curr, index, " RESISTANCE FOUND @ ", df_high  )
+            #         resistance = df_high
+            #         support = df_low
+                    
+                    
+            #         high = resistance + (5 * point)
+            #         low = support - (5 * point)
+                    
+            #         SL1 = support # high - (20 * point)
+            #         TP1 = high + (20 * point)
+            #         SL2 = resistance # low + (20 * point)
+            #         TP2 = low - (20 * point)
+            #         comm = "RES"
+
+            #         # PLACE TRADE     
+            #         ord1 = make_order(curr, 1, SL1, TP1, SL2, TP2, high, low, comm)
+            #         ord2 = make_order(curr, 2, SL1, TP1, SL2, TP2, high, low, comm)
+                    
+            #         break
+            #     if (new_df['low'] < df_low + (pct_diff*point)).sum() >= 7:
+            #         print(curr, index, " SUPPORT FOUND @ ", df_high  )
+            #         resistance = df_high
+            #         support = df_low
+                    
+            #         high = resistance + (10 * point)
+            #         low = support - (10 * point)
+                    
+            #         SL1 = support # high - (20 * point)
+            #         TP1 = high + (20 * point)
+            #         SL2 = resistance # low + (20 * point)
+            #         TP2 = low - (20 * point)
+            #         comm = "SUP"
+
+            #         # PLACE TRADE     
+            #         ord1 = make_order(curr, 1, SL1, TP1, SL2, TP2, high, low, comm)
+            #         ord2 = make_order(curr, 2, SL1, TP1, SL2, TP2, high, low, comm)
+                    
+            #         break
+                
+            
+            
+            # news_min = datetime.datetime.now(tz).minute
+            # news_hour = datetime.datetime.now(tz).hour
+            # df = df[(df['mins'] >= news_min-20) & (df['mins'] <= news_min) & (df['hrs'] <= mt5_hr.hour)]
+
+            trade_time = datetime.datetime.now(tz)
+   
+
+# TO CLOSE ORDER
+
+    #TAKE PROFIT
+    for position in mt5.positions_get():
+        if position.profit >= 20.0:
+            close_result = close_position(position)
+            
+
+    # CLOSE ALL OPEN TRADES BY 5PM LONDON TIME
+    if close_case == 5:
+        positions = mt5.positions_get()
+        for position in positions:
+            close_result = close_position(position)
+    
+    # CLOSE PENDING ORDER ONCE ONE ORDER ACTIVATES OR 10AM HITS
+    # if close_case == 10 :
+    if datetime.datetime.now(tz)  > trade_time + datetime.timedelta(0,1200): # MANUAL EXPIRATION OF PENDING ORDERS
+        # close_case = 10
+        orders = mt5.orders_get()
+        for order in orders:
+            close_order = close_pending_order(order)
+            
+    if len(mt5.orders_get()) > 0:
+        set_open_orders = 1
+    
+    if (len(mt5.positions_get()) < 1 and datetime.datetime.now(tz) > trade_time + datetime.timedelta(0,7)
+            and set_open_pos > 0):
+        set_open_pos = 0
+
+    
+# MULTIPLE CURRENCY PAIRS
+# WHEN PENDING ORDER CHANGES TO POSITION
+
+    if len(mt5.positions_get()) >= 1:
+        for position in mt5.positions_get():
+            pos_sym = position.symbol
+            if len(mt5.orders_get()) > 0:
+                for order in mt5.orders_get():
+                    if order.symbol == pos_sym:
+                        close_order = close_pending_order(order)
+                        prev_positions = len(mt5.positions_get())
+                        # set_open_pos = 1
+                        
+    
+    print(london_now)
+    sleep(sleep_t)
+    
+    if (len(mt5.positions_get()) < 1 and len(mt5.orders_get()) < 1):
+        # and set_open_orders == 1):
+        print("no active trades, closing...")
+        set_open_orders = 0
+        sleep(10)
+        # break
+    
+    # # if datetime.datetime.now().minute >= 58:
+    # news_time = datetime.datetime.now(tz).replace(hour=datetime.datetime.now(tz).hour + 1, minute=0, second =0)
+
+    if datetime.datetime.now(tz).hour < 13 and datetime.datetime.now(tz).hour >= 6:
+        currs = ['GBPJPY','GBPUSD', 'EURUSD','EURGBP', 'BTCUSD', 'XAUUSD']
+    elif datetime.datetime.now(tz).hour < 6:
+        currs = ['AUDUSD', 'NZDUSD', 'USDJPY', 'CADJPY', 'XAUUSD', 'BTCUSD']
+    elif datetime.datetime.now(tz).hour >= 13 and datetime.datetime.now(tz).hour <= 20:
+        currs = ['GBPUSD', 'EURUSD', 'USDJPY', 'XAUUSD', 'BTCUSD']
