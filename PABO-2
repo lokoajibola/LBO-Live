@@ -38,9 +38,14 @@ else:
     currs = currs = ['AUDUSD','GBPUSD', 'NZDUSD','XAUUSD']
 
 
+# SET THE NEWS TIME
+news_min = 7
+news_hour = 23
+
 close_case = 0
 pct_diff = 5 # 0.00001
 period = 10
+
 
 # LOGIN TO MT5
 account = 51610727
@@ -60,6 +65,7 @@ if not mt5.initialize():
     
 tz = pytz.timezone("Europe/London")
 mt5_now = datetime.datetime.fromtimestamp(mt5.symbol_info('GBPUSD').time)
+news_time = datetime.datetime.now(tz).replace(hour=news_hour, minute=news_min, second =0)
 
 prev_positions = 0
 # news_time = datetime.datetime.now(tz).replace(hour=news_hour, minute=news_min, second =0)
@@ -198,6 +204,7 @@ set_open_orders = 0
 trade_time = datetime.datetime.now(tz)
 
 while datetime.datetime.now(tz).hour <= 26:
+    # PAUSE ALL TRADES FROM 9PM TILL MIDNIGHT
     if (len(mt5.positions_get()) < 1 and len(mt5.orders_get()) < 1 
         and datetime.datetime.now(tz).hour >= 21):
         print("ON SLEEP TILL LONDON MIDNIGHT")
@@ -207,6 +214,15 @@ while datetime.datetime.now(tz).hour <= 26:
         sleep_time = nyt - datetime.datetime.now(tz)
         
         sleep(sleep_time.seconds + 10)
+    
+    # PAUSE ALL TRADES AT HIGH IMPACT NEWS TIME
+    if (datetime.datetime.now(tz) > news_time - datetime.timedelta(0,300) and # START BREAK 5 MINS BEFORE NEWS TIME
+        datetime.datetime.now(tz) < news_time + datetime.timedelta(0,30)):
+        print("SHUTDOWN ALL ORDERS OR DEALS MANUALLY")
+        print("NEWSTIME BREAK ACTIVE...")    
+        
+        sleep(600) # SLEEP FOR 10 MINS; ENDS BREAK 5 MINS AFTER NEWS TIME
+        
 
 # TO OPEN ORDER    
     for curr in currs:
