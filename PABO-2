@@ -21,7 +21,8 @@ from time import sleep
 # news_zone = 'GB'
 # news_zone = 'EU'
 # news_zone = 'US'
-news_zone = 'ALL'
+# news_zone = 'ALL'
+news_zone = 'NEW'
 # news_zone = 'CC'
 
 if news_zone == 'GB':
@@ -34,7 +35,7 @@ elif news_zone == 'ALL':
 elif news_zone == 'CC':
     currs = ['BTCUSD', 'ETHUSD', 'DOGUSD', 'SOLUSD']
 else:
-    currs = ['GBPUSD', 'EURUSD', 'USDJPY', 'XAUUSD']
+    currs = currs = ['AUDUSD','GBPUSD', 'NZDUSD','XAUUSD']
 
 
 close_case = 0
@@ -205,12 +206,12 @@ while datetime.datetime.now(tz).hour <= 26:
         nyt = datetime.datetime.now(tz).replace(hour=23, minute=59, second =59)
         sleep_time = nyt - datetime.datetime.now(tz)
         
-        # sleep(sleep_time.seconds + 10)
+        sleep(sleep_time.seconds + 10)
 
 # TO OPEN ORDER    
     for curr in currs:
         if (len(mt5.positions_get(symbol=curr)) < 1 and len(mt5.orders_get(symbol=curr)) <= 1 
-            and close_case == 0 and set_open_pos == 0):
+            and close_case == 0 and set_open_pos == 0 and datetime.datetime.now(tz).hour < 21):
             # and datetime.datetime.now(tz) >= news_time - datetime.timedelta(0,3) 
             #     and datetime.datetime.now(tz) < news_time + datetime.timedelta(0,7)
             #     ):
@@ -380,8 +381,11 @@ while datetime.datetime.now(tz).hour <= 26:
     # news_time = datetime.datetime.now(tz).replace(hour=datetime.datetime.now(tz).hour + 1, minute=0, second =0)
 
     if datetime.datetime.now(tz).hour < 13 and datetime.datetime.now(tz).hour >= 6:
-        currs = ['GBPJPY','GBPUSD', 'EURUSD','EURGBP', 'BTCUSD', 'XAUUSD']
+        currs = ['AUDUSD','GBPUSD', 'NZDUSD','XAUUSD']
+        # currs = ['GBPJPY','GBPUSD', 'EURUSD','EURGBP', 'BTCUSD', 'XAUUSD']
     elif datetime.datetime.now(tz).hour < 6:
-        currs = ['AUDUSD', 'NZDUSD', 'USDJPY', 'CADJPY', 'XAUUSD', 'BTCUSD']
+        currs = ['AUDUSD','GBPUSD', 'NZDUSD','XAUUSD']
+        # currs = ['AUDUSD', 'NZDUSD', 'USDJPY', 'CADJPY', 'XAUUSD', 'BTCUSD']
     elif datetime.datetime.now(tz).hour >= 13 and datetime.datetime.now(tz).hour <= 20:
-        currs = ['GBPUSD', 'EURUSD', 'USDJPY', 'XAUUSD', 'BTCUSD']
+        currs = ['AUDUSD','GBPUSD', 'NZDUSD','XAUUSD']
+        # currs = ['GBPUSD', 'EURUSD', 'USDJPY', 'XAUUSD', 'BTCUSD']
