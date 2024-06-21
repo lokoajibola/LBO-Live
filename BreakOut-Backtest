@@ -1,0 +1,277 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Wed May 29 20:33:58 2024
+
+
+TO BACKTEST BREAKOUT STRATEGIES
+
+@author: LK
+"""
+
+# IMPORT LIBRARIES
+
+import MetaTrader5 as mt5
+import numpy as np
+import datetime
+import pandas as pd
+import pytz
+import pandas_ta as ta
+from time import sleep
+
+close_case = 0
+pct_diff = 5 # 0.00001
+period = 10
+curr = 'XAUUSD'
+# curr = 'GBPUSD'
+
+# LOGIN TO MT5
+account = 7002735 #51610727
+
+mt5.initialize("C:/Program Files/MetaTrader 5/terminal64.exe")
+# authorized=mt5.login(account, password="$ch9to$aJH", server = "mt5-demo.icmarkets.com")
+authorized=mt5.login(account, password="Yacht(1)", server = "mt5-2.icmarkets.com")
+
+if authorized:
+    print("Connected: Connecting to MT5 Client")
+else:
+    print("Failed to connect at account #{}, error code: {}"
+          .format(account, mt5.last_error()))
+   
+# establish connection to MetaTrader 5 terminal
+if not mt5.initialize():
+    print("initialize() failed, error code =",mt5.last_error())
+    mt5.shutdown()
+    
+tz = pytz.timezone("Europe/London")
+mt5_now = datetime.datetime.fromtimestamp(mt5.symbol_info('GBPUSD').time)
+
+prev_positions = 0
+
+def get_rates(curr_pair, rate_type, back_time):
+    
+    # point = mt5.symbol_info(curr_pair).point
+    
+    if rate_type == 2:
+    # RATES FOR LAST 1000 BARS # OHLC
+        # rates = mt5.copy_rates_from_pos(curr_pair, mt5.TIMEFRAME_M1, 0, 500)
+        utc_to = datetime.datetime.fromtimestamp(mt5.symbol_info(curr_pair).time)
+        utc_from = utc_to - datetime.timedelta(hours=back_time)
+        rates = mt5.copy_rates_range(curr_pair, mt5.TIMEFRAME_M5, utc_from, utc_to)
+        rates_frame = pd.DataFrame(rates)
+        # rates_frame['log_return'] = np.log(rates_frame['close']).diff()
+    if rate_type == 1:
+    # RATES FOR 10% OF DAY TICKS #### BID ASK
+        utc_to = datetime.datetime.fromtimestamp(mt5.symbol_info(curr_pair).time)
+        utc_from = utc_to - datetime.timedelta(hours=back_time)
+        rates = mt5.copy_ticks_range(curr_pair, utc_from, utc_to, mt5.COPY_TICKS_ALL) # COPY_TICKS_INFO
+        rates_frame = pd.DataFrame(rates)
+        # rates_frame = rates_frame.drop(['bid','volume','last','volume_real','time','flags',], axis = 1)
+        # rates_ask = rates_frame['ask'] # did this because the ask seems to be the correct values. Bid values were looking awkward
+        rates_frame['close'] = (rates_frame['ask'] + rates_frame['bid'])/2
+        # rates_frame1 = pd.DataFrame(rates)
+        # ask_prices = rates_ask.values.tolist()
+        # rates_frame = rates_frame.dropna()
+        
+    return rates_frame
+point = mt5.symbol_info(curr).point
+
+# abc = pd.DataFrame(columns = ['time', 'tp', 'sl', 'profit', 'bid', 'ask'])
+abc = pd.DataFrame()
+# abc.columns = ['time', 'tp', 'sl', 'profit', 'bid', 'ask']
+
+"""DECLARE VARIABLES"""
+tp = 50 * point
+sl = 100 * point
+
+p = 10 # no of bars that must be ranging
+back_time = 240 # No. of hours to back test
+
+q = 20 # length for bollinger bands
+i = q
+thresh = 10 * point
+iii = 0
+
+"""END DECLARE VARIABLES"""
+
+# FOR THE TICK DATA
+rates_frame = get_rates(curr, 1, back_time)
+rates_frame['times'] = pd.to_datetime(rates_frame['time'], unit='s')
+rates_frame['mins'] = rates_frame['times'].dt.minute
+rates_frame['hrs'] = rates_frame['times'].dt.hour
+mt5_hr = datetime.datetime.fromtimestamp(mt5.symbol_info(curr).time)
+
+
+# FOR THE BARS DATA
+bar_frame = get_rates(curr, 2, back_time)
+bar_frame['times'] = pd.to_datetime(bar_frame['time'], unit='s')
+bar_frame['mins'] = bar_frame['times'].dt.minute
+bar_frame['hrs'] = bar_frame['times'].dt.hour
+
+# GENERATE BOLLINGER BANDS FOR THE RATES_FRAME
+bband_df = ta.bbands(rates_frame['close'], length=q, std=2)
+bband_bar_df = ta.bbands(bar_frame['close'], length=q, std=2)
+
+# # REVERSE ROW OF DF TO ITERATE THROUGH EACH ROW TO TRACE BACK THE RANGE
+# df = rates_frame.loc[::-1].reset_index(drop=True)
+# bband_df = bband_df.loc[::-1].reset_index(drop=True)
+
+# check_range = is_ranging_bollinger_bands(rates_frame)
+
+# USING BOLLINGER BANDS TO CONFIRM A RANGING MARKET
+
+# Comparing two columns
+
+new_df = pd.DataFrame()
+new_df['time'], new_df['hrs'], new_df['mins'], new_df['bid'], new_df['ask'], new_df['close'] = [
+                            rates_frame['times'], rates_frame['hrs'], rates_frame['mins'],
+                            rates_frame['bid'], rates_frame['ask'], rates_frame['close']]
+            
+new_df['BB_L'], new_df['BB_H'] = [bband_df['BBL_20_2.0'], bband_df['BBU_20_2.0']]
+
+
+new_bars = pd.DataFrame()
+new_bars['time'], new_bars['hrs'], new_bars['mins'], new_bars['O'], new_bars['H'], new_bars['L'], new_bars['C'] = [
+                            bar_frame['times'], bar_frame['hrs'], bar_frame['mins'], bar_frame['open'],
+                            bar_frame['high'], bar_frame['low'], bar_frame['close']]
+            
+new_bars['BB_L'], new_bars['BB_H'] = [bband_bar_df['BBL_20_2.0'], bband_bar_df['BBU_20_2.0']]
+
+
+# new_df['res'] = np.where((new_df['df_H'] <= new_df['BB_H']) & 
+#                          (new_df['df_L'] >= new_df['BB_L']), 0, 1)
+
+
+while i < new_bars.shape[0]-q:
+# for i in range(q, new_bars.shape[0]-q):
+    new_tab = new_bars.loc[i:i+p]
+    new_tab.reset_index(inplace = True, drop = True)
+
+    new_tab['res'] = (new_tab['H'] >= new_tab['BB_H']) | (new_tab['L'] <= new_tab['BB_L'])
+    #                      
+    
+    # Initialize the comparison_result column with default value
+    # new_tab['res'] = 1
+    
+    # for ii in range(0,p-1):
+    #     # new_tab['res'] = np.where((new_tab['H'] >= new_tab['BB_H']) and 
+    #     #                           (new_tab['L'] <= new_tab['BB_L']), 1, 0)
+        
+    #     if (new_tab.loc[ii]['H'] >= new_tab.loc[ii]['BB_H'] or 
+    #         new_tab.loc[ii]['L'] <= new_tab.loc[ii]['BB_L']): # if any bar bfr last bar touches
+    #         new_tab.loc[ii]['res'] = 1
+    #     else:
+    #         new_tab.loc[ii]['res'] = 0
+    
+    if new_tab.loc[:p-1]['res'].sum() > 0:
+        r = 0
+        i = i + 1 # start recounting bars after the last bar that touched
+        # break
+    
+    else: # no bar touched BBand, still ranging market
+        r = 1
+        i = i + 1
+        # break
+    
+    if r == 1:
+        if new_tab.loc[p]['H'] >= new_tab.loc[p]['BB_H']: # if last bar touches BBand high
+            touch_time = new_tab.loc[p]['time']
+            touch_BB = new_tab.loc[p]['BB_H']
+            touch_ind = new_df.index[new_df['time'] >= touch_time][0]
+
+            r = 2
+            # break
+        elif new_tab.loc[p]['L'] <= new_tab.loc[p]['BB_L']: # if last bar touches BBand low
+            touch_time = new_tab.loc[p]['time']
+            touch_BB = new_tab.loc[p]['BB_L']
+            r = 3
+            # break
+        # if r == 2:    
+            touch_ind = new_df.index[new_df['time'] >= touch_time][0]
+        
+    if r > 1:
+        while iii == 0:
+                
+                # if new_df.loc[touch_ind]['ask'] >= touch_BB:
+                if r == 2: 
+                    iii = 1
+                    while iii == 1:
+                        if new_df.loc[touch_ind]['ask'] >= (touch_BB + thresh + tp):
+                            profit = new_df.loc[touch_ind]['ask'] - (touch_BB + thresh)
+                            iii = 2
+                            
+                            time1 = new_df.loc[touch_ind]['time']
+                            # tp = tp
+                            # sl = sl
+                            bid = new_df.loc[touch_ind]['bid']
+                            ask = new_df.loc[touch_ind]['ask']
+                            ab = pd.DataFrame([time1, tp, sl, profit, bid, ask])
+                            abc = pd.concat([ab.T, abc], ignore_index=True)
+                            # abc.columns = ['time', 'tp', 'sl', 'profit', 'bid', 'ask']
+
+                        elif new_df.loc[touch_ind]['bid'] <= (touch_BB + thresh - sl):
+                            profit = new_df.loc[touch_ind]['bid'] - (touch_BB + thresh)
+                            iii = 2
+                            
+                            time1 = new_df.loc[touch_ind]['time']
+                            # tp = tp
+                            # sl = sl
+                            bid = new_df.loc[touch_ind]['bid']
+                            ask = new_df.loc[touch_ind]['ask']
+                            ab = pd.DataFrame([time1, tp, sl, profit, bid, ask])
+                            abc = pd.concat([ab.T, abc], ignore_index=True)
+                            # abc.columns = ['time', 'tp', 'sl', 'profit', 'bid', 'ask']
+
+                        else:   
+                            touch_ind = touch_ind + 1  
+                # elif new_df.loc[touch_ind]['bid'] <= touch_BB:
+                elif r == 3: 
+                    iii = 1
+                    while iii == 1:
+                        if new_df.loc[touch_ind]['bid'] <= (touch_BB - thresh - tp):
+                            profit = (touch_BB - thresh) - new_df.loc[touch_ind]['bid']
+                            iii = 2
+                            
+                            time1 = new_df.loc[touch_ind]['time']
+                            # tp = tp
+                            # sl = sl
+                            bid = new_df.loc[touch_ind]['bid']
+                            ask = new_df.loc[touch_ind]['ask']
+                            ab = pd.DataFrame([time1, tp, sl, profit, bid, ask])
+                            abc = pd.concat([ab.T, abc], ignore_index=True)
+                            # abc.columns = ['time', 'tp', 'sl', 'profit', 'bid', 'ask']
+
+                            
+                        elif new_df.loc[touch_ind]['ask'] >= (touch_BB - thresh + sl):
+                            profit = (touch_BB - thresh) - new_df.loc[touch_ind]['ask']
+                            iii = 2
+                            
+                            time1 = new_df.loc[touch_ind]['time']
+                            # tp = tp
+                            # sl = sl
+                            bid = new_df.loc[touch_ind]['bid']
+                            ask = new_df.loc[touch_ind]['ask']
+                            ab = pd.DataFrame([time1, tp, sl, profit, bid, ask])
+                            abc = pd.concat([ab.T, abc], ignore_index=True)
+                            # abc.columns = ['time', 'tp', 'sl', 'profit', 'bid', 'ask']
+
+                        else:   
+                            touch_ind = touch_ind + 1 
+                else:
+                    touch_ind = touch_ind + 1
+                    profit = 0
+                    iii = 3
+        
+            # # tm = time1 - datetime.timedelta(minutes=time1.minute % 5,
+            #                          seconds=time1.second,
+            #                          microseconds=time1.microsecond)
+            
+        new_ind = new_bars.index[new_bars['time'] >= time1][0]
+        
+        i = new_ind
+        r = 0
+        iii = 0
+        profit = 0
+    
+    
+abc.columns = ['time', 'tp', 'sl', 'profit', 'bid', 'ask']
+print('TOTAL PROFIT: ', abc['profit'].sum())
