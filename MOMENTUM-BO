@@ -28,7 +28,7 @@ account = 7002735 #51610727
 
 mt5.initialize("C:/Program Files/MetaTrader 5/terminal64.exe")
 # authorized=mt5.login(account, password="$ch9to$aJH", server = "mt5-demo.icmarkets.com")
-authorized=mt5.login(account, password="Yacht(1)", server = "mt5-2.icmarkets.com")
+authorized=mt5.login(account, password="xxxxxx", server = "mt5-2.icmarkets.com")
 
 if authorized:
     print("Connected: Connecting to MT5 Client")
