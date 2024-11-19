@@ -1,0 +1,700 @@
+DATE,TIME,CURRENCY,IMPACT,NEWS,,,ACTUAL,FORECAST,PREVIOUS
+1/4/2023,15:00,USD,H,ISM Manufacturing PMI,,,48.4,48.5,49
+1/4/2023,15:00,USD,H,JOLTS Job Openings,,,10.46M,10.04M,10.51M
+1/4/2023,19:00,USD,H,FOMC Meeting Minutes,,,,,
+1/5/2023,13:15,USD,H,ADP Non-Farm Employment Change,,,235K,152K,182K
+1/6/2023,13:30,USD,H,Average Hourly Earnings m/m,,,0.30%,0.40%,0.40%
+1/6/2023,13:30,USD,H,Non-Farm Employment Change,,,223K,200K,256K
+1/6/2023,13:30,USD,H,Unemployment Rate,,,3.50%,3.70%,3.70%
+1/6/2023,15:00,USD,H,ISM Services PMI,,,49.6,55,56.5
+1/10/2023,14:00,USD,H,Fed Chair Powell Speaks,,,,,
+1/12/2023,13:30,USD,H,CPI m/m,,,-0.10%,-0.10%,0.10%
+1/12/2023,13:30,USD,H,CPI y/y,,,6.50%,6.50%,7.10%
+1/12/2023,13:30,USD,H,Core CPI m/m,,,0.30%,0.30%,0.20%
+1/13/2023,15:00,USD,H,Prelim UoM Consumer Sentiment,,,64.6,60.8,59.7
+1/17/2023,13:30,USD,H,Empire State Manufacturing Index,,,-32.9,-8.7,-11.2
+1/18/2023,13:30,USD,H,Core PPI m/m,,,0.10%,0.10%,0.20%
+1/18/2023,13:30,USD,H,Core Retail Sales m/m,,,-1.10%,-0.50%,-0.60%
+1/18/2023,13:30,USD,H,PPI m/m,,,-0.50%,-0.10%,0.20%
+1/18/2023,13:30,USD,H,Retail Sales m/m,,,-1.10%,-0.80%,-1.00%
+1/24/2023,14:45,USD,H,Flash Services PMI,,,46.6,45.3,44.7
+1/26/2023,13:30,USD,H,Advance GDP q/q,,,2.90%,2.60%,3.20%
+1/27/2023,13:30,USD,H,Core PCE Price Index m/m,,,0.30%,0.30%,0.20%
+1/31/2023,15:00,USD,H,CB Consumer Confidence,,,107.1,109.1,109
+2/1/2023,13:15,USD,H,ADP Non-Farm Employment Change,,,106K,176K,253K
+2/1/2023,15:00,USD,H,ISM Manufacturing PMI,,,47.4,48,48.4
+2/1/2023,15:00,USD,H,JOLTS Job Openings,,,11.01M,10.28M,10.44M
+2/1/2023,19:00,USD,H,FOMC Statement,,,,,
+2/1/2023,19:00,USD,H,Federal Funds Rate,,,4.75%,4.75%,4.50%
+2/1/2023,19:30,USD,H,FOMC Press Conference,,,,,
+2/3/2023,13:30,USD,H,Average Hourly Earnings m/m,,,0.30%,0.30%,0.40%
+2/3/2023,13:30,USD,H,Non-Farm Employment Change,,,517K,193K,260K
+2/3/2023,13:30,USD,H,Unemployment Rate,,,3.40%,3.60%,3.50%
+2/3/2023,15:00,USD,H,ISM Services PMI,,,55.2,50.5,49.6
+2/7/2023,17:40,USD,H,Fed Chair Powell Speaks,,,,,
+2/8/2023,14:15,USD,H,FOMC Member Williams Speaks,,,,,
+2/10/2023,15:00,USD,H,Prelim UoM Consumer Sentiment,,,66.4,65,64.9
+2/14/2023,13:30,USD,H,CPI m/m,,,0.50%,0.50%,-0.10%
+2/14/2023,13:30,USD,H,CPI y/y,,,6.40%,6.20%,6.50%
+2/14/2023,13:30,USD,H,Core CPI m/m,,,0.40%,0.40%,0.30%
+2/15/2023,13:30,USD,H,Core Retail Sales m/m,,,2.30%,0.90%,-0.90%
+2/15/2023,13:30,USD,H,Empire State Manufacturing Index,,,-5.8,-18.2,-32.9
+2/15/2023,13:30,USD,H,Retail Sales m/m,,,3.00%,1.90%,-1.10%
+2/16/2023,13:30,USD,H,Core PPI m/m,,,0.50%,0.30%,0.30%
+2/16/2023,13:30,USD,H,PPI m/m,,,0.70%,0.40%,-0.20%
+2/21/2023,14:45,USD,H,Flash Services PMI,,,50.5,47.3,46.8
+2/22/2023,19:00,USD,H,FOMC Meeting Minutes,,,,,
+2/23/2023,13:30,USD,H,Prelim GDP q/q,,,2.70%,2.90%,2.90%
+2/24/2023,13:30,USD,H,Core PCE Price Index m/m,,,0.60%,0.40%,0.40%
+2/28/2023,15:00,USD,H,CB Consumer Confidence,,,102.9,108.5,106
+3/1/2023,15:00,USD,H,ISM Manufacturing PMI,,,47.7,47.9,47.4
+3/3/2023,15:00,USD,H,ISM Services PMI,,,55.1,54.5,55.2
+3/7/2023,15:00,USD,H,Fed Chair Powell Testifies,,,,,
+3/8/2023,13:15,USD,H,ADP Non-Farm Employment Change,,,242K,197K,119K
+3/8/2023,15:00,USD,H,Fed Chair Powell Testifies,,,,,
+3/8/2023,15:00,USD,H,JOLTS Job Openings,,,10.82M,10.58M,11.23M
+3/10/2023,13:30,USD,H,Average Hourly Earnings m/m,,,0.20%,0.30%,0.30%
+3/10/2023,13:30,USD,H,Non-Farm Employment Change,,,311K,224K,504K
+3/10/2023,13:30,USD,H,Unemployment Rate,,,3.60%,3.40%,3.40%
+3/12/2023,22:20,USD,H,Fed Announcement,,,,,
+3/14/2023,12:30,USD,H,CPI m/m,,,0.40%,0.40%,0.50%
+3/14/2023,12:30,USD,H,CPI y/y,,,6.00%,6.00%,6.40%
+3/14/2023,12:30,USD,H,Core CPI m/m,,,0.50%,0.40%,0.40%
+3/15/2023,12:30,USD,H,Core PPI m/m,,,0.00%,0.40%,0.10%
+3/15/2023,12:30,USD,H,Core Retail Sales m/m,,,-0.10%,-0.10%,2.40%
+3/15/2023,12:30,USD,H,Empire State Manufacturing Index,,,-24.6,-7.9,-5.8
+3/15/2023,12:30,USD,H,PPI m/m,,,-0.10%,0.30%,0.30%
+3/15/2023,12:30,USD,H,Retail Sales m/m,,,-0.40%,-0.30%,3.20%
+3/16/2023,12:30,USD,H,Unemployment Claims,,,192K,205K,212K
+3/17/2023,14:00,USD,H,Prelim UoM Consumer Sentiment,,,63.4,66.9,67
+3/19/2023,21:00,USD,H,Fed Announcement,,,,,
+3/22/2023,18:00,USD,H,FOMC Economic Projections,,,,,
+3/22/2023,18:00,USD,H,FOMC Statement,,,,,
+3/22/2023,18:00,USD,H,Federal Funds Rate,,,5.00%,5.00%,4.75%
+3/22/2023,18:30,USD,H,FOMC Press Conference,,,,,
+3/23/2023,12:30,USD,H,Unemployment Claims,,,191K,198K,192K
+3/24/2023,13:45,USD,H,Flash Manufacturing PMI,,,49.3,47,47.3
+3/24/2023,13:45,USD,H,Flash Services PMI,,,53.8,50.3,50.6
+3/28/2023,15:00,USD,H,CB Consumer Confidence,,,104.2,101,103.4
+3/30/2023,13:30,USD,H,Final GDP q/q,,,2.60%,2.70%,2.70%
+3/30/2023,13:30,USD,H,Unemployment Claims,,,198K,196K,191K
+3/31/2023,13:30,USD,H,Core PCE Price Index m/m,,,0.30%,0.40%,0.50%
+4/3/2023,15:00,USD,H,ISM Manufacturing PMI,,,46.3,47.5,47.7
+4/4/2023,15:00,USD,H,JOLTS Job Openings,,,9.93M,10.49M,10.56M
+4/5/2023,13:15,USD,H,ADP Non-Farm Employment Change,,,145K,208K,261K
+4/5/2023,15:00,USD,H,ISM Services PMI,,,51.2,54.3,55.1
+4/6/2023,13:30,USD,H,Unemployment Claims,,,228K,200K,246K
+4/7/2023,13:30,USD,H,Average Hourly Earnings m/m,,,0.30%,0.30%,0.20%
+4/7/2023,13:30,USD,H,Non-Farm Employment Change,,,236K,228K,326K
+4/7/2023,13:30,USD,H,Unemployment Rate,,,3.50%,3.60%,3.60%
+4/12/2023,13:30,USD,H,CPI m/m,,,0.10%,0.20%,0.40%
+4/12/2023,13:30,USD,H,CPI y/y,,,5.00%,5.10%,6.00%
+4/12/2023,13:30,USD,H,Core CPI m/m,,,0.40%,0.40%,0.50%
+4/12/2023,19:00,USD,H,FOMC Meeting Minutes,,,,,
+4/13/2023,13:30,USD,H,Core PPI m/m,,,-0.10%,0.20%,0.20%
+4/13/2023,13:30,USD,H,PPI m/m,,,-0.50%,0.00%,0.00%
+4/13/2023,13:30,USD,H,Unemployment Claims,,,239K,233K,228K
+4/14/2023,13:30,USD,H,Core Retail Sales m/m,,,-0.80%,-0.40%,0.00%
+4/14/2023,13:30,USD,H,Retail Sales m/m,,,-1.00%,-0.40%,-0.20%
+4/14/2023,15:00,USD,H,Prelim UoM Consumer Sentiment,,,63.5,62,62
+4/17/2023,13:30,USD,H,Empire State Manufacturing Index,,,10.8,-17.7,-24.6
+4/20/2023,13:30,USD,H,Unemployment Claims,,,245K,240K,240K
+4/21/2023,14:45,USD,H,Flash Manufacturing PMI,,,50.4,49,49.2
+4/21/2023,14:45,USD,H,Flash Services PMI,,,53.7,51.5,52.6
+4/25/2023,15:00,USD,H,CB Consumer Confidence,,,101.3,104.1,104
+4/27/2023,13:30,USD,H,Advance GDP q/q,,,1.10%,2.00%,2.60%
+4/27/2023,13:30,USD,H,Unemployment Claims,,,230K,247K,246K
+4/28/2023,13:30,USD,H,Core PCE Price Index m/m,,,0.30%,0.30%,0.30%
+4/28/2023,13:30,USD,H,Employment Cost Index q/q,,,1.20%,1.10%,1.00%
+5/1/2023,15:00,USD,H,ISM Manufacturing PMI,,,47.1,46.8,46.3
+5/2/2023,15:00,USD,H,JOLTS Job Openings,,,9.59M,9.74M,9.97M
+5/3/2023,13:15,USD,H,ADP Non-Farm Employment Change,,,296K,148K,142K
+5/3/2023,15:00,USD,H,ISM Services PMI,,,51.9,51.8,51.2
+5/3/2023,19:00,USD,H,FOMC Statement,,,,,
+5/3/2023,19:00,USD,H,Federal Funds Rate,,,5.25%,5.25%,5.00%
+5/3/2023,19:30,USD,H,FOMC Press Conference,,,,,
+5/4/2023,13:30,USD,H,Unemployment Claims,,,242K,239K,229K
+5/5/2023,13:30,USD,H,Average Hourly Earnings m/m,,,0.50%,0.30%,0.30%
+5/5/2023,13:30,USD,H,Non-Farm Employment Change,,,253K,181K,165K
+5/5/2023,13:30,USD,H,Unemployment Rate,,,3.40%,3.60%,3.50%
+5/10/2023,13:30,USD,H,CPI m/m,,,0.40%,0.40%,0.10%
+5/10/2023,13:30,USD,H,CPI y/y,,,4.90%,5.00%,5.00%
+5/10/2023,13:30,USD,H,Core CPI m/m,,,0.40%,0.30%,0.40%
+5/11/2023,13:30,USD,H,Core PPI m/m,,,0.20%,0.20%,0.00%
+5/11/2023,13:30,USD,H,PPI m/m,,,0.20%,0.30%,-0.40%
+5/11/2023,13:30,USD,H,Unemployment Claims,,,264K,245K,242K
+5/12/2023,15:00,USD,H,Prelim UoM Consumer Sentiment,,,57.7,63,63.5
+5/15/2023,13:30,USD,H,Empire State Manufacturing Index,,,-31.8,-3.7,10.8
+5/16/2023,13:30,USD,H,Core Retail Sales m/m,,,0.40%,0.50%,-0.50%
+5/16/2023,13:30,USD,H,Retail Sales m/m,,,0.40%,0.80%,-0.70%
+5/18/2023,13:30,USD,H,Unemployment Claims,,,242K,253K,264K
+5/19/2023,16:00,USD,H,Fed Chair Powell Speaks,,,,,
+5/23/2023,14:45,USD,H,Flash Manufacturing PMI,,,48.5,50,50.2
+5/23/2023,14:45,USD,H,Flash Services PMI,,,55.1,52.6,53.6
+5/24/2023,19:00,USD,H,FOMC Meeting Minutes,,,,,
+5/25/2023,13:30,USD,H,Prelim GDP q/q,,,1.30%,1.10%,1.10%
+5/25/2023,13:30,USD,H,Unemployment Claims,,,229K,249K,225K
+5/26/2023,13:30,USD,H,Core PCE Price Index m/m,,,0.40%,0.30%,0.30%
+5/30/2023,15:00,USD,H,CB Consumer Confidence,,,,99.1,101.3
+5/31/2023,15:00,USD,H,JOLTS Job Openings,,,,9.41M,9.59M
+6/1/2023,13:15,USD,H,ADP Non-Farm Employment Change,,,278K,173K,291K
+6/1/2023,13:30,USD,H,Unemployment Claims,,,232K,236K,230K
+6/1/2023,15:00,USD,H,ISM Manufacturing PMI,,,46.9,47,47.1
+6/2/2023,13:30,USD,H,Average Hourly Earnings m/m,,,0.30%,0.30%,0.40%
+6/2/2023,13:30,USD,H,Non-Farm Employment Change,,,339K,193K,294K
+6/2/2023,13:30,USD,H,Unemployment Rate,,,3.70%,3.50%,3.40%
+6/5/2023,15:00,USD,H,ISM Services PMI,,,50.3,52.6,51.9
+6/8/2023,13:30,USD,H,Unemployment Claims,,,261K,236K,233K
+6/13/2023,13:30,USD,H,CPI m/m,,,0.10%,0.20%,0.40%
+6/13/2023,13:30,USD,H,CPI y/y,,,4.00%,4.10%,4.90%
+6/13/2023,13:30,USD,H,Core CPI m/m,,,0.40%,0.40%,0.40%
+6/14/2023,13:30,USD,H,Core PPI m/m,,,0.20%,0.20%,0.20%
+6/14/2023,13:30,USD,H,PPI m/m,,,-0.30%,-0.10%,0.20%
+6/14/2023,19:00,USD,H,FOMC Economic Projections,,,,,
+6/14/2023,19:00,USD,H,FOMC Statement,,,,,
+6/14/2023,19:00,USD,H,Federal Funds Rate,,,5.25%,5.25%,5.25%
+6/14/2023,19:30,USD,H,FOMC Press Conference,,,,,
+6/15/2023,13:30,USD,H,Core Retail Sales m/m,,,0.10%,0.10%,0.40%
+6/15/2023,13:30,USD,H,Empire State Manufacturing Index,,,6.6,-15,-31.8
+6/15/2023,13:30,USD,H,Retail Sales m/m,,,0.30%,-0.20%,0.40%
+6/15/2023,13:30,USD,H,Unemployment Claims,,,262K,246K,262K
+6/16/2023,15:00,USD,H,Prelim UoM Consumer Sentiment,,,63.9,60.1,59.2
+6/16/2023,19:00,USD,H,Treasury Currency Report,,,,,
+6/21/2023,15:00,USD,H,Fed Chair Powell Testifies,,,,,
+6/22/2023,13:30,USD,H,Unemployment Claims,,,264K,261K,264K
+6/22/2023,15:00,USD,H,Fed Chair Powell Testifies,,,,,
+6/23/2023,14:45,USD,H,Flash Manufacturing PMI,,,46.3,48.6,48.4
+6/23/2023,14:45,USD,H,Flash Services PMI,,,54.1,53.9,54.9
+6/27/2023,15:00,USD,H,CB Consumer Confidence,,,109.7,103.9,102.5
+6/28/2023,14:30,USD,H,Fed Chair Powell Speaks,,,,,
+6/29/2023,7:30,USD,H,Fed Chair Powell Speaks,,,,,
+6/29/2023,13:30,USD,H,Final GDP q/q,,,2.00%,1.40%,1.30%
+6/29/2023,13:32,USD,H,Unemployment Claims,,,239K,264K,265K
+6/30/2023,13:30,USD,H,Core PCE Price Index m/m,,,0.30%,0.30%,0.40%
+7/3/2023,15:00,USD,H,ISM Manufacturing PMI,,,46,47.2,46.9
+7/5/2023,19:00,USD,H,FOMC Meeting Minutes,,,,,
+7/6/2023,13:15,USD,H,ADP Non-Farm Employment Change,,,497K,226K,267K
+7/6/2023,13:30,USD,H,Unemployment Claims,,,248K,247K,236K
+7/6/2023,15:00,USD,H,ISM Services PMI,,,53.9,51.3,50.3
+7/6/2023,15:00,USD,H,JOLTS Job Openings,,,9.82M,9.93M,10.32M
+7/7/2023,13:30,USD,H,Average Hourly Earnings m/m,,,0.40%,0.30%,0.40%
+7/7/2023,13:30,USD,H,Non-Farm Employment Change,,,209K,224K,306K
+7/7/2023,13:30,USD,H,Unemployment Rate,,,3.60%,3.60%,3.70%
+7/12/2023,13:30,USD,H,CPI m/m,,,0.20%,0.30%,0.10%
+7/12/2023,13:30,USD,H,CPI y/y,,,3.00%,3.10%,4.00%
+7/12/2023,13:30,USD,H,Core CPI m/m,,,0.20%,0.30%,0.40%
+7/13/2023,13:30,USD,H,Core PPI m/m,,,0.10%,0.20%,0.10%
+7/13/2023,13:30,USD,H,PPI m/m,,,0.10%,0.20%,-0.40%
+7/13/2023,13:30,USD,H,Unemployment Claims,,,237K,251K,249K
+7/14/2023,15:00,USD,H,Prelim UoM Consumer Sentiment,,,72.6,65.5,64.4
+7/17/2023,13:30,USD,H,Empire State Manufacturing Index,,,1.1,-3.5,6.6
+7/18/2023,13:30,USD,H,Core Retail Sales m/m,,,0.20%,0.40%,0.30%
+7/18/2023,13:30,USD,H,Retail Sales m/m,,,0.20%,0.50%,0.50%
+7/19/2023,13:30,USD,H,Housing Starts,,,1.43M,1.48M,1.56M
+7/20/2023,13:30,USD,H,Unemployment Claims,,,228K,239K,237K
+7/24/2023,14:45,USD,H,Flash Manufacturing PMI,,,49,46.1,46.3
+7/24/2023,14:45,USD,H,Flash Services PMI,,,52.4,54,54.4
+7/25/2023,15:00,USD,H,CB Consumer Confidence,,,117,112.1,110.1
+7/26/2023,19:00,USD,H,FOMC Statement,,,,,
+7/26/2023,19:00,USD,H,Federal Funds Rate,,,5.50%,5.50%,5.25%
+7/26/2023,19:30,USD,H,FOMC Press Conference,,,,,
+7/27/2023,13:30,USD,H,Advance GDP q/q,,,2.40%,1.80%,2.00%
+7/27/2023,13:30,USD,H,Unemployment Claims,,,221K,234K,228K
+7/28/2023,13:30,USD,H,Core PCE Price Index m/m,,,0.20%,0.20%,0.30%
+7/28/2023,13:30,USD,H,Employment Cost Index q/q,,,1.00%,1.10%,1.20%
+7/28/2023,15:00,USD,H,Revised UoM Consumer Sentiment,,,71.6,72.6,72.6
+8/1/2023,15:00,USD,H,ISM Manufacturing PMI,,,46.4,46.9,46
+8/1/2023,15:00,USD,H,JOLTS Job Openings,,,9.58M,9.61M,9.62M
+8/2/2023,13:15,USD,H,ADP Non-Farm Employment Change,,,324K,191K,455K
+8/3/2023,13:30,USD,H,Unemployment Claims,,,227K,226K,221K
+8/3/2023,15:00,USD,H,ISM Services PMI,,,52.7,53.1,53.9
+8/4/2023,13:30,USD,H,Average Hourly Earnings m/m,,,0.40%,0.30%,0.40%
+8/4/2023,13:30,USD,H,Non-Farm Employment Change,,,187K,205K,185K
+8/4/2023,13:30,USD,H,Unemployment Rate,,,3.50%,3.60%,3.60%
+8/10/2023,12:30,USD,H,Core CPI m/m,,,,0.20%,0.20%
+8/10/2023,12:30,USD,H,CPI m/m,,,,0.20%,0.20%
+8/10/2023,12:30,USD,H,CPI y/y,,,,3.30%,3.00%
+8/10/2023,12:30,USD,H,Unemployment Claims,,,,231K,227K
+8/11/2023,12:30,USD,H,Core PPI m/m,,,,0.20%,0.10%
+8/11/2023,12:30,USD,H,PPI m/m,,,,0.20%,0.10%
+8/11/2023,14:00,USD,H,Prelim UoM Consumer Sentiment,,,,71.4,72.6
+8/15/2023,12:30,USD,H,Core Retail Sales m/m,,,,0.40%,0.20%
+8/15/2023,12:30,USD,H,Empire State Manufacturing Index,,,,-0.9,1.1
+8/15/2023,12:30,USD,H,Retail Sales m/m,,,,0.40%,0.20%
+8/16/2023,18:00,USD,H,FOMC Meeting Minutes,,,,,
+8/17/2023,12:30,USD,H,Unemployment Claims,,,,240K,248K
+8/23/2023,13:45,USD,H,Flash Manufacturing PMI,,,,48.9,49
+8/23/2023,13:45,USD,H,Flash Services PMI,,,,52.1,52.4
+8/24/2023,12:30,USD,H,Unemployment Claims,,,,239K,239K
+8/25/2023,14:00,USD,H,Revised UoM Consumer Sentiment,,,,71.2,71.2
+8/25/2023,14:05,USD,H,Fed Chair Powell Speaks,,,,,
+8/29/2023,13:00,USD,H,S&P/CS Composite-20 HPI y/y,,,,-1.50%,-1.70%
+8/29/2023,14:00,USD,H,CB Consumer Confidence,,,,116,117
+8/29/2023,14:00,USD,H,JOLTS Job Openings,,,,9.49M,9.58M
+8/30/2023,12:15,USD,H,ADP Non-Farm Employment Change,,,,194K,324K
+8/30/2023,12:30,USD,H,Prelim GDP q/q,,,,2.40%,2.40%
+8/31/2023,12:30,USD,H,Core PCE Price Index m/m,,,,0.20%,0.20%
+8/31/2023,12:30,USD,H,Unemployment Claims,,,,236K,230K
+9/1/2023,12:30,USD,H,Average Hourly Earnings m/m,,,,0.30%,0.40%
+9/1/2023,12:30,USD,H,Non-Farm Employment Change,,,,169K,187K
+9/1/2023,12:30,USD,H,Unemployment Rate,,,,3.50%,3.50%
+9/1/2023,14:00,USD,H,ISM Manufacturing PMI,,,,46.9,46.4
+9/6/2023,14:00,USD,H,ISM Services PMI,,,,52.5,52.7
+9/7/2023,12:30,USD,H,Unemployment Claims,,,,232K,228K
+9/13/2023,12:30,USD,H,Core CPI m/m,,,,0.20%,0.20%
+9/13/2023,12:30,USD,H,CPI m/m,,,,0.60%,0.20%
+9/13/2023,12:30,USD,H,CPI y/y,,,,3.60%,3.20%
+9/14/2023,12:30,USD,H,Core PPI m/m,,,,0.20%,0.30%
+9/14/2023,12:30,USD,H,Core Retail Sales m/m,,,,0.40%,1.00%
+9/14/2023,12:30,USD,H,PPI m/m,,,,0.40%,0.30%
+9/14/2023,12:30,USD,H,Retail Sales m/m,,,,0.10%,0.70%
+9/14/2023,12:30,USD,H,Unemployment Claims,,,,226K,216K
+9/15/2023,12:30,USD,H,Empire State Manufacturing Index,,,,-9.9,-19
+9/15/2023,14:00,USD,H,Prelim UoM Consumer Sentiment,,,,69,71.2
+9/20/2023,18:00,USD,H,Federal Funds Rate,,,,5.50%,5.50%
+9/20/2023,18:00,USD,H,FOMC Economic Projections,,,,,
+9/20/2023,18:00,USD,H,FOMC Statement,,,,,
+9/20/2023,18:30,USD,H,FOMC Press Conference,,,,,
+9/21/2023,12:30,USD,H,Unemployment Claims,,,,224K,220K
+9/22/2023,13:45,USD,H,Flash Manufacturing PMI,,,,48.2,47
+9/22/2023,13:45,USD,H,Flash Services PMI,,,,50.7,51
+9/26/2023,14:00,USD,H,CB Consumer Confidence,,,,105.5,106.1
+9/28/2023,12:30,USD,H,Final GDP q/q,,,,2.20%,2.10%
+9/28/2023,12:30,USD,H,Unemployment Claims,,,,214K,201K
+9/28/2023,20:00,USD,H,Fed Chair Powell Speaks,,,,,
+9/29/2023,12:30,USD,H,Core PCE Price Index m/m,,,,0.20%,0.20%
+9/29/2023,14:00,USD,H,Revised UoM Consumer Sentiment,,,,67.7,67.7
+10/2/2023,14:00,USD,H,ISM Manufacturing PMI,,,,47.8,47.6
+10/2/2023,15:00,USD,H,Fed Chair Powell Speaks,,,,,
+10/3/2023,14:00,USD,H,JOLTS Job Openings,,,,8.81M,8.83M
+10/4/2023,12:15,USD,H,ADP Non-Farm Employment Change,,,,154K,177K
+10/4/2023,14:00,USD,H,ISM Services PMI,,,,53.5,54.5
+10/5/2023,12:30,USD,H,Unemployment Claims,,,,211K,204K
+10/6/2023,12:30,USD,H,Average Hourly Earnings m/m,,,,0.30%,0.20%
+10/6/2023,12:30,USD,H,Non-Farm Employment Change,,,,171K,187K
+10/6/2023,12:30,USD,H,Unemployment Rate,,,,3.70%,3.80%
+10/11/2023,12:30,USD,H,Core PPI m/m,,,,0.20%,0.20%
+10/11/2023,12:30,USD,H,PPI m/m,,,,0.30%,0.70%
+10/11/2023,18:00,USD,H,FOMC Meeting Minutes,,,,,
+10/12/2023,12:30,USD,H,Core CPI m/m,,,,0.30%,0.30%
+10/12/2023,12:30,USD,H,CPI m/m,,,,0.30%,0.60%
+10/12/2023,12:30,USD,H,CPI y/y,,,,3.60%,3.70%
+10/12/2023,12:30,USD,H,Unemployment Claims,,,,211K,207K
+10/13/2023,14:00,USD,H,Prelim UoM Consumer Sentiment,,,,67.2,67.7
+10/16/2023,12:30,USD,H,Empire State Manufacturing Index,,,,-6.4,1.9
+10/17/2023,12:30,USD,H,Core Retail Sales m/m,,,,0.20%,0.60%
+10/17/2023,12:30,USD,H,Retail Sales m/m,,,,0.30%,0.60%
+10/19/2023,12:30,USD,H,Unemployment Claims,,,,210K,209K
+10/19/2023,16:00,USD,H,Fed Chair Powell Speaks,,,,,
+10/24/2023,13:45,USD,H,Flash Manufacturing PMI,,,,49.5,48.9
+10/24/2023,13:45,USD,H,Flash Services PMI,,,,49.9,50.2
+10/25/2023,20:35,USD,H,Fed Chair Powell Speaks,,,,,
+10/26/2023,12:30,USD,H,Advance GDP q/q,,,,4.50%,2.40%
+10/26/2023,12:30,USD,H,Unemployment Claims,,,,208K,198K
+10/27/2023,12:30,USD,H,Core PCE Price Index m/m,,,,0.30%,0.10%
+10/27/2023,14:00,USD,H,Revised UoM Consumer Sentiment,,,,63,63
+10/31/2023,12:30,USD,H,Employment Cost Index q/q,,,,1.00%,1.00%
+10/31/2023,14:00,USD,H,CB Consumer Confidence,,,,100.5,103
+11/1/2023,12:15,USD,H,ADP Non-Farm Employment Change,,,,149K,89K
+11/1/2023,14:00,USD,H,ISM Manufacturing PMI,,,,49,49
+11/1/2023,14:00,USD,H,JOLTS Job Openings,,,,9.34M,9.61M
+11/1/2023,18:00,USD,H,Federal Funds Rate,,,,5.50%,5.50%
+11/1/2023,18:00,USD,H,FOMC Statement,,,,,
+11/1/2023,18:30,USD,H,FOMC Press Conference,,,,,
+11/2/2023,12:30,USD,H,Unemployment Claims,,,,210K,210K
+11/3/2023,12:30,USD,H,Average Hourly Earnings m/m,,,,0.30%,0.20%
+11/3/2023,12:30,USD,H,Non-Farm Employment Change,,,,178K,336K
+11/3/2023,12:30,USD,H,Unemployment Rate,,,,3.80%,3.80%
+11/3/2023,14:00,USD,H,ISM Services PMI,,,,53,53.6
+11/7/2023,21:00,USD,H,Treasury Currency Report,,,,,
+11/8/2023,14:15,USD,H,Fed Chair Powell Speaks,,,,,
+11/9/2023,13:30,USD,H,Unemployment Claims,,,,218K,217K
+11/9/2023,19:00,USD,H,Fed Chair Powell Speaks,,,,,
+11/10/2023,15:00,USD,H,Prelim UoM Consumer Sentiment,,,,63.7,63
+11/14/2023,13:30,USD,H,Core CPI m/m,,,,0.30%,0.30%
+11/14/2023,13:30,USD,H,CPI m/m,,,,0.10%,0.40%
+11/14/2023,13:30,USD,H,CPI y/y,,,,3.30%,3.70%
+11/15/2023,13:30,USD,H,Core PPI m/m,,,,0.30%,0.30%
+11/15/2023,13:30,USD,H,Core Retail Sales m/m,,,,-0.10%,0.60%
+11/15/2023,13:30,USD,H,Empire State Manufacturing Index,,,,-3.3,-4.6
+11/15/2023,13:30,USD,H,PPI m/m,,,,0.10%,0.50%
+11/15/2023,13:30,USD,H,Retail Sales m/m,,,,-0.30%,0.70%
+11/16/2023,13:30,USD,H,Unemployment Claims,,,,221K,217K
+11/21/2023,19:00,USD,H,FOMC Meeting Minutes,,,,,
+11/22/2023,13:30,USD,H,Unemployment Claims,,,,226K,231K
+11/22/2023,15:00,USD,H,Revised UoM Consumer Sentiment,,,,61.1,60.4
+11/24/2023,14:45,USD,H,Flash Manufacturing PMI,,,,49.9,50
+11/24/2023,14:45,USD,H,Flash Services PMI,,,,50.4,50.9
+11/28/2023,15:00,USD,H,CB Consumer Confidence,,,,101,102.6
+11/29/2023,13:30,USD,H,Prelim GDP q/q,,,,5.00%,4.90%
+11/30/2023,13:30,USD,H,Core PCE Price Index m/m,,,,0.20%,0.30%
+11/30/2023,13:30,USD,H,Unemployment Claims,,,,219K,209K
+12/1/2023,15:00,USD,H,ISM Manufacturing PMI,,,,47.9,46.7
+12/1/2023,16:00,USD,H,Fed Chair Powell Speaks,,,,,
+12/1/2023,19:00,USD,H,Fed Chair Powell Speaks,,,,,
+12/5/2023,15:00,USD,H,ISM Services PMI,,,,52.2,51.8
+12/5/2023,15:00,USD,H,JOLTS Job Openings,,,,9.31M,9.55M
+12/6/2023,13:15,USD,H,ADP Non-Farm Employment Change,,,,131K,113K
+12/7/2023,13:30,USD,H,Unemployment Claims,,,,221K,218K
+12/8/2023,13:30,USD,H,Average Hourly Earnings m/m,,,,0.30%,0.20%
+12/8/2023,13:30,USD,H,Non-Farm Employment Change,,,,184K,150K
+12/8/2023,13:30,USD,H,Unemployment Rate,,,,3.90%,3.90%
+12/8/2023,15:00,USD,H,Prelim UoM Consumer Sentiment,,,,62,60.4
+12/12/2023,13:30,USD,H,Core CPI m/m,,,,0.30%,0.20%
+12/12/2023,13:30,USD,H,CPI m/m,,,,0.00%,0.00%
+12/12/2023,13:30,USD,H,CPI y/y,,,,3.10%,3.20%
+12/13/2023,13:30,USD,H,Core PPI m/m,,,,0.20%,0.00%
+12/13/2023,13:30,USD,H,PPI m/m,,,,0.00%,-0.50%
+12/13/2023,19:00,USD,H,Federal Funds Rate,,,,5.50%,5.50%
+12/13/2023,19:00,USD,H,FOMC Economic Projections,,,,,
+12/13/2023,19:00,USD,H,FOMC Statement,,,,,
+12/13/2023,19:30,USD,H,FOMC Press Conference,,,,,
+12/14/2023,13:30,USD,H,Core Retail Sales m/m,,,,-0.10%,0.10%
+12/14/2023,13:30,USD,H,Retail Sales m/m,,,,-0.10%,-0.10%
+12/14/2023,13:30,USD,H,Unemployment Claims,,,,219K,220K
+12/15/2023,13:30,USD,H,Empire State Manufacturing Index,,,,2,9.1
+12/15/2023,14:45,USD,H,Flash Manufacturing PMI,,,,49.5,49.4
+12/15/2023,14:45,USD,H,Flash Services PMI,,,,50.7,50.8
+12/20/2023,15:00,USD,H,CB Consumer Confidence,,,,104.6,102
+12/21/2023,13:30,USD,H,Final GDP q/q,,,,5.20%,5.20%
+12/21/2023,13:30,USD,H,Unemployment Claims,,,,214K,202K
+12/22/2023,13:30,USD,H,Core PCE Price Index m/m,,,,0.20%,0.20%
+12/22/2023,15:00,USD,H,Revised UoM Consumer Sentiment,,,,69.4,69.4
+1/3/2024,15:00,USD,H,ISM Manufacturing PMI,,,,47.2,46.7
+1/3/2024,15:00,USD,H,JOLTS Job Openings,,,,8.84M,8.73M
+1/3/2024,19:00,USD,H,FOMC Meeting Minutes,,,,,
+1/4/2024,13:15,USD,H,ADP Non-Farm Employment Change,,,,120K,103K
+1/4/2024,13:30,USD,H,Unemployment Claims,,,,217K,218K
+1/5/2024,13:30,USD,H,Average Hourly Earnings m/m,,,,0.30%,0.40%
+1/5/2024,13:30,USD,H,Non-Farm Employment Change,,,,168K,199K
+1/5/2024,13:30,USD,H,Unemployment Rate,,,,3.80%,3.70%
+1/5/2024,15:00,USD,H,ISM Services PMI,,,,52.5,52.7
+1/11/2024,13:30,USD,H,Core CPI m/m,,,,0.30%,0.30%
+1/11/2024,13:30,USD,H,CPI m/m,,,,0.20%,0.10%
+1/11/2024,13:30,USD,H,CPI y/y,,,,3.20%,3.10%
+1/11/2024,13:30,USD,H,Unemployment Claims,,,,209K,202K
+1/12/2024,13:30,USD,H,Core PPI m/m,,,,0.20%,0.00%
+1/12/2024,13:30,USD,H,PPI m/m,,,,0.10%,0.00%
+1/16/2024,13:30,USD,H,Empire State Manufacturing Index,,,,-4.9,-14.5
+1/17/2024,13:30,USD,H,Core Retail Sales m/m,,,,0.20%,0.20%
+1/17/2024,13:30,USD,H,Retail Sales m/m,,,,0.40%,0.30%
+1/18/2024,13:30,USD,H,Unemployment Claims,,,,206K,202K
+1/19/2024,15:00,USD,H,Prelim UoM Consumer Sentiment,,,,69.8,69.4
+1/24/2024,14:45,USD,H,Flash Manufacturing PMI,,,,47.6,48.2
+1/24/2024,14:45,USD,H,Flash Services PMI,,,,51.4,51.3
+1/25/2024,13:30,USD,H,Advance GDP q/q,,,,2.00%,4.90%
+1/25/2024,13:30,USD,H,Unemployment Claims,,,,199K,187K
+1/26/2024,13:30,USD,H,Core PCE Price Index m/m,,,,0.20%,0.10%
+1/30/2024,15:00,USD,H,CB Consumer Confidence,,,,114.2,110.7
+1/30/2024,15:00,USD,H,JOLTS Job Openings,,,,8.73M,8.79M
+1/31/2024,13:15,USD,H,ADP Non-Farm Employment Change,,,,148K,164K
+1/31/2024,13:30,USD,H,Employment Cost Index q/q,,,,1.00%,1.10%
+1/31/2024,19:00,USD,H,Federal Funds Rate,,,,5.50%,5.50%
+1/31/2024,19:00,USD,H,FOMC Statement,,,,,
+1/31/2024,19:30,USD,H,FOMC Press Conference,,,,,
+2/1/2024,13:30,USD,H,Unemployment Claims,,,,213K,214K
+2/1/2024,15:00,USD,H,ISM Manufacturing PMI,,,,47.2,47.4
+2/2/2024,13:30,USD,H,Average Hourly Earnings m/m,,,,0.30%,0.40%
+2/2/2024,13:30,USD,H,Non-Farm Employment Change,,,,187K,216K
+2/2/2024,13:30,USD,H,Unemployment Rate,,,,3.80%,3.70%
+2/2/2024,15:00,USD,H,Revised UoM Consumer Sentiment,,,,78.9,78.8
+2/5/2024,0:00,USD,H,Fed Chair Powell Speaks,,,,,
+2/5/2024,15:00,USD,H,ISM Services PMI,,,,52,50.6
+2/8/2024,13:30,USD,H,Unemployment Claims,,,,221K,224K
+2/13/2024,13:30,USD,H,Core CPI m/m,,,,0.30%,0.30%
+2/13/2024,13:30,USD,H,CPI m/m,,,,0.20%,0.30%
+2/13/2024,13:30,USD,H,CPI y/y,,,,2.90%,3.40%
+2/15/2024,13:30,USD,H,Core Retail Sales m/m,,,,0.20%,0.40%
+2/15/2024,13:30,USD,H,Empire State Manufacturing Index,,,,-13.7,-43.7
+2/15/2024,13:30,USD,H,Retail Sales m/m,,,,-0.20%,0.60%
+2/15/2024,13:30,USD,H,Unemployment Claims,,,,219K,218K
+2/16/2024,13:30,USD,H,Core PPI m/m,,,,0.10%,0.00%
+2/16/2024,13:30,USD,H,PPI m/m,,,,0.10%,-0.10%
+2/16/2024,15:00,USD,H,Prelim UoM Consumer Sentiment,,,,80,78.8
+2/21/2024,19:00,USD,H,FOMC Meeting Minutes,,,,,
+2/22/2024,13:30,USD,H,Unemployment Claims,,,,217K,212K
+2/22/2024,14:45,USD,H,Flash Manufacturing PMI,,,,50.5,50.3
+2/22/2024,14:45,USD,H,Flash Services PMI,,,,52.4,52.9
+2/27/2024,13:30,USD,H,Durable Goods Orders m/m,,,,-4.90%,0.00%
+2/27/2024,15:00,USD,H,CB Consumer Confidence,,,,114.8,114.8
+2/28/2024,13:30,USD,H,Prelim GDP q/q,,,,3.30%,3.30%
+2/29/2024,13:30,USD,H,Core PCE Price Index m/m,,,,0.40%,0.20%
+2/29/2024,13:30,USD,H,Unemployment Claims,,,,209K,201K
+3/1/2024,15:00,USD,H,ISM Manufacturing PMI,,,,49.5,49.1
+3/1/2024,15:00,USD,H,Revised UoM Consumer Sentiment,,,,79.6,79.6
+3/5/2024,15:00,USD,H,ISM Services PMI,,,,53,53.4
+3/6/2024,13:15,USD,H,ADP Non-Farm Employment Change,,,,149K,107K
+3/6/2024,15:00,USD,H,Fed Chair Powell Testifies,,,,,
+3/6/2024,15:00,USD,H,JOLTS Job Openings,,,,8.80M,9.03M
+3/7/2024,13:30,USD,H,Unemployment Claims,,,,217K,215K
+3/7/2024,15:00,USD,H,Fed Chair Powell Testifies,,,,,
+3/8/2024,13:30,USD,H,Average Hourly Earnings m/m,,,,0.20%,0.60%
+3/8/2024,13:30,USD,H,Non-Farm Employment Change,,,,198K,353K
+3/8/2024,13:30,USD,H,Unemployment Rate,,,,3.70%,3.70%
+3/12/2024,12:30,USD,H,Core CPI m/m,,,,0.30%,0.40%
+3/12/2024,12:30,USD,H,CPI m/m,,,,0.40%,0.30%
+3/12/2024,12:30,USD,H,CPI y/y,,,,3.10%,3.10%
+3/12/2024,17:01,USD,H,10-y Bond Auction,,,,,4.09|2.6
+3/13/2024,17:01,USD,H,30-y Bond Auction,,,,,4.36|2.4
+3/14/2024,12:30,USD,H,Core PPI m/m,,,,0.20%,0.50%
+3/14/2024,12:30,USD,H,Core Retail Sales m/m,,,,0.50%,-0.60%
+3/14/2024,12:30,USD,H,PPI m/m,,,,0.30%,0.30%
+3/14/2024,12:30,USD,H,Retail Sales m/m,,,,0.80%,-0.80%
+3/14/2024,12:30,USD,H,Unemployment Claims,,,,218K,217K
+3/15/2024,12:30,USD,H,Empire State Manufacturing Index,,,,-7,-2.4
+3/15/2024,14:00,USD,H,Prelim UoM Consumer Sentiment,,,,77.1,79.6
+3/20/2024,18:00,USD,H,Federal Funds Rate,,,,5.50%,5.50%
+3/20/2024,18:00,USD,H,FOMC Economic Projections,,,,,
+3/20/2024,18:00,USD,H,FOMC Statement,,,,,
+3/20/2024,18:30,USD,H,FOMC Press Conference,,,,,
+3/21/2024,12:30,USD,H,Unemployment Claims,,,,212K,209K
+3/21/2024,13:45,USD,H,Flash Manufacturing PMI,,,,51.8,51.5
+3/21/2024,13:45,USD,H,Flash Services PMI,,,,52,51.3
+3/22/2024,13:00,USD,H,Fed Chair Powell Speaks,,,,,
+3/26/2024,14:00,USD,H,CB Consumer Confidence,,,,106.9,106.7
+3/27/2024,22:00,USD,H,FOMC Member Waller Speaks,,,,,
+3/28/2024,12:30,USD,H,Final GDP q/q,,,,3.20%,3.20%
+3/28/2024,12:30,USD,H,Unemployment Claims,,,,212K,210K
+3/28/2024,14:00,USD,H,Pending Home Sales m/m,,,,1.40%,-4.90%
+3/28/2024,14:00,USD,H,Revised UoM Consumer Sentiment,,,,76.5,76.5
+3/29/2024,12:30,USD,H,Core PCE Price Index m/m,,,,0.30%,0.40%
+3/29/2024,15:30,USD,H,Fed Chair Powell Speaks,,,,,
+4/1/2024,14:00,USD,H,ISM Manufacturing PMI,,,,48.5,47.8
+4/2/2024,14:00,USD,H,JOLTS Job Openings,,,,8.76M,8.86M
+4/3/2024,12:15,USD,H,ADP Non-Farm Employment Change,,,,148K,140K
+4/3/2024,14:00,USD,H,ISM Services PMI,,,,52.8,52.6
+4/3/2024,16:10,USD,H,Fed Chair Powell Speaks,,,,,
+4/4/2024,12:30,USD,H,Unemployment Claims,,,,213K,210K
+4/5/2024,12:30,USD,H,Average Hourly Earnings m/m,,,,0.30%,0.10%
+4/5/2024,12:30,USD,H,Non-Farm Employment Change,,,,212K,275K
+4/5/2024,12:30,USD,H,Unemployment Rate,,,,3.90%,3.90%
+4/10/2024,12:30,USD,H,Core CPI m/m,,,,0.30%,0.40%
+4/10/2024,12:30,USD,H,CPI m/m,,,,0.30%,0.40%
+4/10/2024,12:30,USD,H,CPI y/y,,,,3.40%,3.20%
+4/10/2024,18:00,USD,H,FOMC Meeting Minutes,,,,,
+4/11/2024,12:30,USD,H,Core PPI m/m,,,,0.20%,0.30%
+4/11/2024,12:30,USD,H,PPI m/m,,,,0.30%,0.60%
+4/11/2024,12:30,USD,H,Unemployment Claims,,,,216K,221K
+4/11/2024,17:01,USD,H,30-y Bond Auction,,,,,4.33|2.5
+4/12/2024,14:00,USD,H,Prelim UoM Consumer Sentiment,,,,79,76.5
+4/15/2024,12:30,USD,H,Core Retail Sales m/m,,,,0.50%,0.30%
+4/15/2024,12:30,USD,H,Empire State Manufacturing Index,,,,-5.2,-20.9
+4/15/2024,12:30,USD,H,Retail Sales m/m,,,,0.40%,0.60%
+4/16/2024,17:15,USD,H,Fed Chair Powell Speaks,,,,,
+4/18/2024,12:30,USD,H,Unemployment Claims,,,,215K,211K
+4/23/2024,13:45,USD,H,Flash Manufacturing PMI,,,,52,52.5
+4/23/2024,13:45,USD,H,Flash Services PMI,,,,52,51.7
+4/25/2024,12:30,USD,H,Advance GDP q/q,,,,2.50%,3.30%
+4/25/2024,12:30,USD,H,Unemployment Claims,,,,214K,212K
+4/25/2024,14:00,USD,H,Pending Home Sales m/m,,,,0.30%,1.60%
+4/26/2024,12:30,USD,H,Core PCE Price Index m/m,,,,0.30%,0.30%
+4/26/2024,14:00,USD,H,Revised UoM Consumer Sentiment,,,,77.9,77.9
+4/30/2024,12:30,USD,H,Employment Cost Index q/q,,,,1.00%,0.90%
+4/30/2024,14:00,USD,H,CB Consumer Confidence,,,,104,104.7
+5/1/2024,12:15,USD,H,ADP Non-Farm Employment Change,,,,179K,184K
+5/1/2024,13:45,USD,H,Final Manufacturing PMI,,,,49.9,49.9
+5/1/2024,14:00,USD,H,ISM Manufacturing PMI,,,,50,50.3
+5/1/2024,14:00,USD,H,JOLTS Job Openings,,,,8.68M,8.76M
+5/1/2024,18:00,USD,H,Federal Funds Rate,,,,5.50%,5.50%
+5/1/2024,18:00,USD,H,FOMC Statement,,,,,
+5/1/2024,18:30,USD,H,FOMC Press Conference,,,,,
+5/2/2024,12:30,USD,H,Unemployment Claims,,,,212K,207K
+5/3/2024,12:30,USD,H,Average Hourly Earnings m/m,,,,0.30%,0.30%
+5/3/2024,12:30,USD,H,Non-Farm Employment Change,,,,238K,303K
+5/3/2024,12:30,USD,H,Unemployment Rate,,,,3.80%,3.80%
+5/3/2024,14:00,USD,H,ISM Services PMI,,,,52,51.4
+5/9/2024,12:30,USD,H,Unemployment Claims,,,,212K,208K
+5/9/2024,17:01,USD,H,30-y Bond Auction,,,,,4.67|2.4
+5/10/2024,14:00,USD,H,Prelim UoM Consumer Sentiment,,,,76.3,77.9
+5/14/2024,12:30,USD,H,Core PPI m/m,,,,0.20%,0.20%
+5/14/2024,12:30,USD,H,PPI m/m,,,,0.30%,0.20%
+5/14/2024,14:00,USD,H,Fed Chair Powell Speaks,,,,,
+5/15/2024,12:30,USD,H,Core CPI m/m,,,,0.30%,0.40%
+5/15/2024,12:30,USD,H,Core Retail Sales m/m,,,,0.20%,1.10%
+5/15/2024,12:30,USD,H,CPI m/m,,,,0.40%,0.40%
+5/15/2024,12:30,USD,H,CPI y/y,,,,3.40%,3.50%
+5/15/2024,12:30,USD,H,Empire State Manufacturing Index,,,,-9.9,-14.3
+5/15/2024,12:30,USD,H,Retail Sales m/m,,,,0.40%,0.70%
+5/16/2024,12:30,USD,H,Unemployment Claims,,,,219K,231K
+5/22/2024,18:00,USD,H,FOMC Meeting Minutes,,,,,
+5/23/2024,12:30,USD,H,Unemployment Claims,,,,220K,222K
+5/23/2024,13:45,USD,H,Flash Manufacturing PMI,,,,50,49.9
+5/23/2024,13:45,USD,H,Flash Services PMI,,,,51.2,50.9
+5/24/2024,14:00,USD,H,Revised UoM Consumer Sentiment,,,,67.8,67.4
+5/28/2024,14:00,USD,H,CB Consumer Confidence,,,,96,97
+5/30/2024,12:30,USD,H,Prelim GDP q/q,,,,1.20%,1.60%
+5/30/2024,12:30,USD,H,Unemployment Claims,,,,218K,215K
+5/30/2024,14:00,USD,H,Pending Home Sales m/m,,,,-1.10%,3.40%
+5/31/2024,12:30,USD,H,Core PCE Price Index m/m,,,,0.30%,0.30%
+6/3/2024,13:45,USD,H,Final Manufacturing PMI,,,,50.9,50.9
+6/3/2024,14:00,USD,H,ISM Manufacturing PMI,,,,49.8,49.2
+6/4/2024,14:00,USD,H,JOLTS Job Openings,,,,8.37M,8.49M
+6/5/2024,12:15,USD,H,ADP Non-Farm Employment Change,,,,173K,192K
+6/5/2024,14:00,USD,H,ISM Services PMI,,,,51,49.4
+6/6/2024,12:30,USD,H,Unemployment Claims,,,,220K,219K
+6/7/2024,12:30,USD,H,Average Hourly Earnings m/m,,,,0.30%,0.20%
+6/7/2024,12:30,USD,H,Non-Farm Employment Change,,,,182K,175K
+6/7/2024,12:30,USD,H,Unemployment Rate,,,,3.90%,3.90%
+6/12/2024,12:30,USD,H,Core CPI m/m,,,,0.30%,0.30%
+6/12/2024,12:30,USD,H,CPI m/m,,,,0.10%,0.30%
+6/12/2024,12:30,USD,H,CPI y/y,,,,3.40%,3.40%
+6/12/2024,18:00,USD,H,Federal Funds Rate,,,,5.50%,5.50%
+6/12/2024,18:00,USD,H,FOMC Economic Projections,,,,,
+6/12/2024,18:00,USD,H,FOMC Statement,,,,,
+6/12/2024,18:30,USD,H,FOMC Press Conference,,,,,
+6/13/2024,12:30,USD,H,Core PPI m/m,,,,0.30%,0.50%
+6/13/2024,12:30,USD,H,PPI m/m,,,,0.10%,0.50%
+6/13/2024,12:30,USD,H,Unemployment Claims,,,,225K,229K
+6/14/2024,14:00,USD,H,Prelim UoM Consumer Sentiment,,,,72.1,67.4
+6/17/2024,12:30,USD,H,Empire State Manufacturing Index,,,,-12.5,-15.6
+6/18/2024,12:30,USD,H,Core Retail Sales m/m,,,,0.20%,0.20%
+6/18/2024,12:30,USD,H,Retail Sales m/m,,,,0.30%,0.00%
+6/20/2024,12:30,USD,H,Unemployment Claims,,,,235K,242K
+6/20/2024,20:00,USD,H,Treasury Currency Report,,,,,
+6/21/2024,13:45,USD,H,Flash Manufacturing PMI,,,,51,50.9
+6/21/2024,13:45,USD,H,Flash Services PMI,,,,53.4,54.8
+6/25/2024,14:00,USD,H,CB Consumer Confidence,,,,100,102
+6/26/2024,14:00,USD,H,New Home Sales,,,,636K,634K
+6/27/2024,12:30,USD,H,Final GDP q/q,,,,1.40%,1.30%
+6/27/2024,12:30,USD,H,Unemployment Claims,,,,236K,238K
+6/27/2024,14:00,USD,H,Pending Home Sales m/m,,,,0.60%,-7.70%
+6/28/2024,12:30,USD,H,Core PCE Price Index m/m,,,,0.10%,0.20%
+7/1/2024,14:00,USD,H,ISM Manufacturing PMI,,,,49.2,48.7
+7/2/2024,13:30,USD,H,Fed Chair Powell Speaks,,,,,
+7/2/2024,14:00,USD,H,JOLTS Job Openings,,,,7.96M,8.06M
+7/3/2024,12:15,USD,H,ADP Non-Farm Employment Change,,,,163K,152K
+7/3/2024,12:30,USD,H,Unemployment Claims,,,,234K,233K
+7/3/2024,14:00,USD,H,ISM Services PMI,,,,52.6,53.8
+7/3/2024,18:00,USD,H,FOMC Meeting Minutes,,,,,
+7/5/2024,12:30,USD,H,Average Hourly Earnings m/m,,,,0.30%,0.40%
+7/5/2024,12:30,USD,H,Non-Farm Employment Change,,,,191K,272K
+7/5/2024,12:30,USD,H,Unemployment Rate,,,,4.00%,4.00%
+7/9/2024,14:00,USD,H,Fed Chair Powell Testifies,,,,,
+7/10/2024,14:00,USD,H,Fed Chair Powell Testifies,,,,,
+7/11/2024,12:30,USD,H,Core CPI m/m,,,,0.20%,0.20%
+7/11/2024,12:30,USD,H,CPI m/m,,,,0.10%,0.00%
+7/11/2024,12:30,USD,H,CPI y/y,,,,3.10%,3.30%
+7/11/2024,12:30,USD,H,Unemployment Claims,,,,236K,238K
+7/12/2024,12:30,USD,H,Core PPI m/m,,,,0.20%,0.00%
+7/12/2024,12:30,USD,H,PPI m/m,,,,0.10%,-0.20%
+7/12/2024,14:00,USD,H,Prelim UoM Consumer Sentiment,,,,68.5,65.6
+7/15/2024,12:30,USD,H,Empire State Manufacturing Index,,,,-5.5,-6
+7/15/2024,16:30,USD,H,Fed Chair Powell Speaks,,,,,
+7/16/2024,12:30,USD,H,Core Retail Sales m/m,,,,0.10%,-0.10%
+7/16/2024,12:30,USD,H,Retail Sales m/m,,,,-0.30%,0.10%
+7/18/2024,12:30,USD,H,Unemployment Claims,,,,229K,222K
+7/24/2024,13:45,USD,H,Flash Manufacturing PMI,,,,51.7,51.7
+7/24/2024,13:45,USD,H,Flash Services PMI,,,,54.7,55.1
+7/25/2024,12:30,USD,H,Advance GDP q/q,,,,2.00%,1.60%
+7/25/2024,12:30,USD,H,Unemployment Claims,,,,237K,243K
+7/26/2024,12:30,USD,H,Core PCE Price Index m/m,,,,0.20%,0.10%
+7/30/2024,14:00,USD,H,CB Consumer Confidence,,,,99.7,100.4
+7/30/2024,14:00,USD,H,JOLTS Job Openings,,,,8.02M,8.14M
+7/31/2024,12:15,USD,H,ADP Non-Farm Employment Change,,,,147K,150K
+7/31/2024,12:30,USD,H,Employment Cost Index q/q,,,,1.00%,1.20%
+7/31/2024,14:00,USD,H,Pending Home Sales m/m,,,,1.40%,-2.10%
+7/31/2024,18:00,USD,H,Federal Funds Rate,,,,5.50%,5.50%
+7/31/2024,18:00,USD,H,FOMC Statement,,,,,
+7/31/2024,18:30,USD,H,FOMC Press Conference,,,,,
+8/1/2024,12:30,USD,H,Unemployment Claims,,,,236K,235K
+8/1/2024,14:00,USD,H,ISM Manufacturing PMI,,,,48.8,48.5
+8/2/2024,12:30,USD,H,Average Hourly Earnings m/m,,,,0.30%,0.30%
+8/2/2024,12:30,USD,H,Non-Farm Employment Change,,,,176K,206K
+8/2/2024,12:30,USD,H,Unemployment Rate,,,,4.10%,4.10%
+8/5/2024,14:00,USD,H,ISM Services PMI,,,,51.1,48.8
+8/8/2024,12:30,USD,H,Unemployment Claims,,,,241K,249K
+8/13/2024,12:30,USD,H,Core PPI m/m,,,,0.20%,0.40%
+8/13/2024,12:30,USD,H,PPI m/m,,,,0.20%,0.20%
+8/14/2024,12:30,USD,H,Core CPI m/m,,,,0.20%,0.10%
+8/14/2024,12:30,USD,H,CPI m/m,,,,0.20%,-0.10%
+8/14/2024,12:30,USD,H,CPI y/y,,,,3.00%,3.00%
+8/15/2024,12:30,USD,H,Core Retail Sales m/m,,,,0.10%,0.40%
+8/15/2024,12:30,USD,H,Retail Sales m/m,,,,0.40%,0.00%
+8/15/2024,12:30,USD,H,Unemployment Claims,,,,236K,233K
+8/21/2024,18:00,USD,H,FOMC Meeting Minutes,,,,,
+8/22/2024,12:30,USD,H,Unemployment Claims,,,,232K,227K
+8/22/2024,13:45,USD,H,Flash Manufacturing PMI,,,,49.5,49.5
+8/22/2024,13:45,USD,H,Flash Services PMI,,,,54,56
+8/23/2024,14:00,USD,H,Fed Chair Powell Speaks,,,,,
+8/27/2024,14:00,USD,H,CB Consumer Confidence,,,,100.9,100.3
+8/29/2024,12:30,USD,H,Prelim GDP q/q,,,,2.80%,2.80%
+8/29/2024,12:30,USD,H,Unemployment Claims,,,,232K,232K
+8/30/2024,12:30,USD,H,Core PCE Price Index m/m,,,,0.20%,0.20%
+9/3/2024,14:00,USD,H,ISM Manufacturing PMI,,,,47.5,46.8
+9/4/2024,14:00,USD,H,JOLTS Job Openings,,,,8.09M,8.18M
+9/5/2024,12:15,USD,H,ADP Non-Farm Employment Change,,,,144K,122K
+9/5/2024,12:30,USD,H,Unemployment Claims,,,,231K,231K
+9/5/2024,14:00,USD,H,ISM Services PMI,,,,51.3,51.4
+9/6/2024,12:30,USD,H,Average Hourly Earnings m/m,,,,0.30%,0.20%
+9/6/2024,12:30,USD,H,Non-Farm Employment Change,,,,164K,114K
+9/6/2024,12:30,USD,H,Unemployment Rate,,,,4.20%,4.30%
+9/6/2024,15:00,USD,H,FOMC Member Waller Speaks,,,,,
+9/11/2024,12:30,USD,H,Core CPI m/m,,,,0.20%,0.20%
+9/11/2024,12:30,USD,H,CPI m/m,,,,0.20%,0.20%
+9/11/2024,12:30,USD,H,CPI y/y,,,,2.50%,2.90%
+9/12/2024,12:30,USD,H,Core PPI m/m,,,,0.20%,0.00%
+9/12/2024,12:30,USD,H,PPI m/m,,,,0.10%,0.10%
+9/12/2024,12:30,USD,H,Unemployment Claims,,,,227K,227K
+9/17/2024,12:30,USD,H,Core Retail Sales m/m,,,,0.20%,0.40%
+9/17/2024,12:30,USD,H,Retail Sales m/m,,,,-0.20%,1.00%
+9/18/2024,18:00,USD,H,Federal Funds Rate,,,,5.25%,5.50%
+9/18/2024,18:00,USD,H,FOMC Economic Projections,,,,,
+9/18/2024,18:00,USD,H,FOMC Statement,,,,,
+9/18/2024,18:30,USD,H,FOMC Press Conference,,,,,
+9/19/2024,12:30,USD,H,Unemployment Claims,,,,230K,230K
+9/23/2024,13:45,USD,H,Flash Manufacturing PMI,,,,48.6,48
+9/23/2024,13:45,USD,H,Flash Services PMI,,,,55.3,55.2
+9/24/2024,14:00,USD,H,CB Consumer Confidence,,,,103.9,103.3
+9/26/2024,12:30,USD,H,Final GDP q/q,,,,3.00%,3.00%
+9/26/2024,12:30,USD,H,Unemployment Claims,,,,224K,219K
+9/26/2024,13:20,USD,H,Fed Chair Powell Speaks,,,,,
+9/27/2024,12:30,USD,H,Core PCE Price Index m/m,,,,0.20%,0.20%
+9/30/2024,17:55,USD,H,Fed Chair Powell Speaks,,,,,
+10/1/2024,14:00,USD,H,ISM Manufacturing PMI,,,,47.6,47.2
+10/1/2024,14:00,USD,H,JOLTS Job Openings,,,,7.64M,7.67M
+10/2/2024,12:15,USD,H,ADP Non-Farm Employment Change,,,,124K,99K
+10/3/2024,12:30,USD,H,Unemployment Claims,,,,222K,218K
+10/3/2024,14:00,USD,H,ISM Services PMI,,,,51.7,51.5
+10/4/2024,12:30,USD,H,Average Hourly Earnings m/m,,,,0.30%,0.40%
+10/4/2024,12:30,USD,H,Non-Farm Employment Change,,,,147K,142K
+10/4/2024,12:30,USD,H,Unemployment Rate,,,,4.20%,4.20%
+10/9/2024,18:00,USD,H,FOMC Meeting Minutes,,,,,
+10/10/2024,12:30,USD,H,Core CPI m/m,,,,0.20%,0.30%
+10/10/2024,12:30,USD,H,CPI m/m,,,,0.10%,0.20%
+10/10/2024,12:30,USD,H,CPI y/y,,,,2.30%,2.50%
+10/10/2024,12:30,USD,H,Unemployment Claims,,,,231K,225K
+10/11/2024,12:30,USD,H,Core PPI m/m,,,,0.20%,0.30%
+10/11/2024,12:30,USD,H,PPI m/m,,,,0.10%,0.20%
+10/17/2024,12:30,USD,H,Core Retail Sales m/m,,,,0.10%,0.10%
+10/17/2024,12:30,USD,H,Retail Sales m/m,,,,0.30%,0.10%
+10/17/2024,12:30,USD,H,Unemployment Claims,,,,241K,258K
+10/24/2024,12:30,USD,H,Unemployment Claims,,,,243K,241K
+10/24/2024,13:45,USD,H,Flash Manufacturing PMI,,,,47.5,47
+10/24/2024,13:45,USD,H,Flash Services PMI,,,,55,55.4
+10/29/2024,14:00,USD,H,CB Consumer Confidence,,,,99.5,98.7
+10/29/2024,14:00,USD,H,JOLTS Job Openings,,,,7.98M,8.04M
+10/30/2024,12:15,USD,H,ADP Non-Farm Employment Change,,,,110K,143K
+10/30/2024,12:30,USD,H,Advance GDP q/q,,,,3.00%,2.80%
+10/31/2024,12:30,USD,H,Core PCE Price Index m/m,,,,0.30%,0.10%
+10/31/2024,12:30,USD,H,Employment Cost Index q/q,,,,0.90%,0.90%
+10/31/2024,12:30,USD,H,Unemployment Claims,,,,229K,227K
+11/1/2024,12:30,USD,H,Average Hourly Earnings m/m,,,,0.30%,0.40%
+11/1/2024,12:30,USD,H,Non-Farm Employment Change,,,,106K,254K
+11/1/2024,12:30,USD,H,Unemployment Rate,,,,4.10%,4.10%
+11/1/2024,14:00,USD,H,ISM Manufacturing PMI,,,,47.6,47.2
+11/5/2024,15:00,USD,H,ISM Services PMI,,,,53.8,54.9
+11/5/2024,15:15,USD,H,Presidential Election,,,,,
+11/5/2024,15:16,USD,H,Congressional Elections,,,,,
+11/7/2024,13:30,USD,H,Unemployment Claims,,,,223K,216K
+11/7/2024,19:00,USD,H,Federal Funds Rate,,,,4.75%,5.00%
+11/7/2024,19:00,USD,H,FOMC Statement,,,,,
+11/7/2024,19:30,USD,H,FOMC Press Conference,,,,,
+11/13/2024,13:30,USD,H,Core CPI m/m,,,,0.30%,0.30%
+11/13/2024,13:30,USD,H,CPI m/m,,,,0.20%,0.20%
+11/13/2024,13:30,USD,H,CPI y/y,,,,2.60%,2.40%
+11/14/2024,13:30,USD,H,Core PPI m/m,,,,0.30%,0.20%
+11/14/2024,13:30,USD,H,PPI m/m,,,,0.20%,0.00%
+11/14/2024,13:30,USD,H,Unemployment Claims,,,,224K,221K
+11/14/2024,20:00,USD,H,Fed Chair Powell Speaks,,,,,
+11/15/2024,13:30,USD,H,Core Retail Sales m/m,,,,0.30%,0.50%
+11/15/2024,13:30,USD,H,Retail Sales m/m,,,,0.30%,0.40%
