@@ -58,7 +58,7 @@ df1 = df[(df['NEWS'] == e_news) & (df['ACTUAL'] > df['FORECAST'])]
 # LOGIN TO MT5
 account = 187255335 #51610727
 mt5.initialize("C:/Program Files/MetaTrader 5 EXNESS/terminal64.exe")
-authorized=mt5.login(account, password="Yacht(1)", server = "Exness-MT5Real27")
+authorized=mt5.login(account, password="xxxxxxx", server = "Exness-MT5Real27")
 
 if authorized:
     print("Connected: Connecting to MT5 Client")
