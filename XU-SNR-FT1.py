@@ -61,7 +61,7 @@ i = 50 # FVG in points
 # # LOGIN TO MT5
 # account = 7002735 #187255335 #51610727
 # mt5.initialize("C:/Program Files/MetaTrader 5 IC Markets (SC)/terminal64.exe")
-# authorized=mt5.login(account, password="Yacht(1)", server = "ICMarketsSC-MT5-2")
+# authorized=mt5.login(account, password="xxxxxxxx", server = "ICMarketsSC-MT5-2")
 
 # LOGIN TO MT5
 account = 51962256
